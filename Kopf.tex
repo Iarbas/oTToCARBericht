@@ -1,0 +1,82 @@
+\documentclass[10pt,a4paper,oneside,headinclude,footinclude,BCOR5mm]{scrartcl}
+\usepackage{pdflscape}                         % fuer Querformate und so
+\usepackage{wrapfig}                           % ermoeglicht, Bilder von Text umfliessen zu lassen
+\usepackage[pdftex]{graphicx}                  % einbinden Graphiken
+\usepackage[T1]{fontenc}                       % Deutschzeug
+\usepackage[utf8]{inputenc}                    % für die Kodierungsangabe des Editors
+%\usepackage[marvosym]                         %
+\usepackage{ngerman}                           % 
+\usepackage{mathrsfs,amssymb}                  % Mathezeug
+\usepackage[intlimits]{empheq}                 %
+\usepackage{amsmath}                           %
+\usepackage{array}                             % Tabellenerweiterung
+\usepackage{tabularx}
+\usepackage{ifthen,calc}                       % Verbesserte Zuweisungen und Kontrollstrukturen
+\usepackage{pifont,mathptmx,charter,courier}   % Schriften und Symbole
+\usepackage[scaled]{helvet}                    %
+%\usepackage{natbib}
+\usepackage[numbers,square]{natbib}            % fuer den Bibtex, damit plaindin verwendet werden kann
+\usepackage{caption}                           % fuer die Beschriftung von Grafiken
+\usepackage{float}                             % macht die figures dorthin, wohin ich sie haben moechte
+\usepackage{hyperref}
+\usepackage{breakurl}
+
+% Zur Veraenderung der Ueberschriften
+\usepackage{setspace}                          % fuer den Zeilenabstand
+\usepackage{titlesec}                          % zur Formatierung der Ueberschriften
+\titleformat{\chapter}[hang]{\normalfont\Large\bfseries}{\thechapter}{0.5em}{}          % Format muss beim chapter mit rein, sonst geht es nicht.
+\titleformat{\section}[hang]{\normalfont\large\bfseries}{\thesection}{0.5em}{}
+\titleformat{\subsection}[hang]{\normalfont\bfseries}{\thesubsection}{0.5em}{}
+
+\titlespacing*{\chapter}
+{0pc}{-20pt}{6pt}[0pc]
+
+\titlespacing{\section}
+{0pc}{10pt}{*1}[0pc]
+\titlespacing{\subsection}
+{0pc}{6pt}{*1}[0pc] 
+
+\usepackage{accents}                           % siehe eine Zeile drunter
+\renewcommand{\dot}[1]{%                       % fuer einen besseren Punkt bei Zeitableitungen
+  \accentset{\mbox{\large .}}{#1}}
+\renewcommand{\ddot}[1]{%
+  \accentset{\mbox{\large .\hspace{-0.2ex}.}}{#1}}
+
+% Andreas sein Zeug
+%\usepackage[left=2.5cm,right=2.5cm,top=3cm,bottom=3cm]{geometry}                                   % Geometrie
+%\usepackage[usenames,dvipsnames]{color}                                                            % keine Ahnung
+%\usepackage{xcolor}                                                                                %
+%\usepackage{colortbl}                                                                              %
+%\usepackage{hyperref}   %nicht verwenden                                                           %
+%\hypersetup{colorlinks=true, linkcolor=black, citecolor=blue, filecolor=blue, urlcolor=blue}       %
+%\usepackage{framed}                                                                                %
+%\usepackage{supertabular}                                                                          %
+
+
+% Einstellungen
+\usepackage{parskip}                                 % Einzug aus, Absatzabstand ein
+\usepackage{pdfpages}                                % ermoeglicht pdf-Seiten einzufuegen
+\usepackage{ulem}                                    % neue Strich-Funktionen (z.B. Text durchstreichen)
+\tolerance=2000                                      % Toleranz für Wortzwischenräume
+\setlength{\emergencystretch}{20pt}                  % Zusätliche Zeilendehnbarkeit
+\setlength{\fboxrule}{1pt}\setlength{\fboxsep}{4mm}  % Rechtecke um Gleichungen
+
+\setlength\voffset{-1in}                             % Hier drunter ist das Zeug von Andreas
+\setlength\hoffset{-1in}
+\setlength\topmargin{2cm}
+\setlength\oddsidemargin{2cm}
+\setlength\textheight{23.7cm}
+\setlength\textwidth{17.001cm}
+\setlength\footskip{1cm}
+\setlength\headheight{0.6cm}
+\setlength\headsep{1cm}
+\setlength{\skip\footins}{0.119cm}
+\setlength\tabcolsep{1mm}
+\renewcommand\arraystretch{1.3}
+\renewcommand{\footnoterule}{\rule{200pt}{1pt}{\vspace*{0.5cm}}}
+
+\usepackage{fancyhdr}                          % Einstellungen für Kopf- und Fusszeilen
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[RO,LE]{\thepage}                    % ungerade rechts, gerade links
+\fancyhead[C]{\nouppercase{\leftmark}}

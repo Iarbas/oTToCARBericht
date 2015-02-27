@@ -1,0 +1,79 @@
+\section{Parameterschätzung}
+Um die unbekannten Parameter eines Modells schätzen zu können, wird zunächst ein valides Modell und einen Experimentierstand benötigt. Das Modell wird dem Bericht oTToCAR \cite[Seite 12]{VikAnd} entnommen, welches dort auch schon auf seine grundlegende physikalische Korrektheit mit Simulationen überprüft wurde. Das gegebene Modell besitzt dabei zwei Arten von Parametern. Zum einen sind es direkt bestimmbare Parameter, zum anderen sind es Parameter die nur durch modellbasierte Schätzverfahren ermittelt werden können. Um die Simulation mit dem realen Fahrzeug in seinem Verhalten vergleichen zu können, werden dabei Messungen von allen Zuständen benötigt. Da diese Experimente jedoch nicht immer einfach zu realisieren sind und um den technischen Aufwand der Messungen so gering wie möglich zu halten, sollten die zu messenden Zustände beschränkt und so gewählt werden, dass:    
+\begin{itemize}
+	\item sie charackteristisch für das Verhalten sind
+	\item durch sie andere Zustände bestimmt werden können
+	\item die wichtigsten Regelgrößen auch direkt gemessen werden
+\end{itemize}
+
+\subsection{Messbare Parametern}
+Die direkte Bestimmung von Parametern erfolgt weitgehend durch die Messung der selbigen, oder deren Berechnung durch weiteren messbaren Größen. Im Falle der Eingangsgröße $u_{1}$, dem Einschlagswinkel der Räder, musste zum Beispiel das Ansteuerungssignal des Servomotors in einen Winkel für die Räder umgerechnet werden. Das Ansteuerungssignal ist hierbei ein 256-stufiges PWM-Signal, welches in eine Winkelangabe umgerechnet werden muss. Für die Versuchsanordnung wurde das Fahrzeug zuerst so erhöht, dass die Räder nicht mehr auf dem Boden auflagen. Diese Vorgehensweise war nötig, da bei Kontakt der Räder mit dem Boden bei einem stehenden Fahrzeug der Haftwiderstand so hoch ist, dass sich eine kleinere Winkeländerung ergeben und die Messung verfälschen würde. Denn bei schneller Fahrt verringert sich dieser Widerstand auf nahezu Null und kann vernachlässigt werden. Für die Messung wurde längs an das linke Vorderrad eine Verlängerung befestigt und für jede Servoeinstellung eine Winkelauslenkung gemessen und die Kalibrierung des Servomotors vorgenommen. 
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=5cm]{Bilder/u1Messung.png}
+	\caption[Messng der Relation PWM-Stufe Servo zu Einschlagswinkel Räder]
+		{Messng der Relation PWM-Stufe Servo zu Einschlagswinkel Räder (aus \cite{TT01} und \cite{Wim})}
+	\label{pict:u1Mess}
+\end{figure}
+
+Als Ergebnis dieses Experimentes kam heraus, dass die Erhöhung um eine PWM-Stufe des Servomotors konstant eine Drehung der Räder um 0.0028 rad entspricht. In der Tabelle \ref{tab:physGR} aufgeführten Größen wurden hingegen direkt am oTToCAR gemessen, bzw. das Trägheitsmoment aus einem CAD-Modell \cite{TimMar} berechnet. 
+
+\begin{table}[h!]
+\centering
+\begin{tabularx}{\columnwidth}{m{6cm}|m{4cm}|X}
+  \textbf{Physikalische Größe} & \textbf{Exakter Wert}& \textbf{Einheit}\\\hline\hline 
+	\rule{0pt}{1mm} & &\\
+	Dichte der Luft & $\rho_{L}=1,204$ & $[\text{kg s}^{-1} ]$\\
+	Erdbeschleunigung& $g=9,806$ & $[\text{m s}^{-2}]$\\
+	Masse& $m=2,8$ & $[\text{kg}]$\\
+  	Radabstand& $l=0,257$ & $[\text{m}]$\\
+	Radius des Rades & $r=0,0335$ & $[\text{m}]$\\
+	Übersetzungsfaktor Drehzahl Motor $\rightarrow$ Räder  & $\epsilon=5,52$ & $[\text{-}]$
+\end{tabularx}
+\caption{Parameter, welche direkt bestimmt werden können. \label{tab:Pardir}}
+\end{table} 
+
+\subsection{Bestimmung von Parametern mithilfe von Schätzverfahren}
+Die verbliebenen zu ermittelnden Parameter erfordern weit umfangreichere Messungen, wie zum Beispiel die Parameter für den Rollwiderstand und die Schräglaufübersetzung der Räder, die sich auch nicht direkt messen lassen. Für die Suche nach geeigneten Parametersätzen wird dabei ein Schätzverfahren benötigt, das anhand von anderen direkt messbaren Größen, die von den gesuchten Parametern abhängig sind, die zu bestimmenden Parameter indirekt ermitteln kann. 
+
+\subsubsection{Aufbau der Experimente}
+Die wohl charackteristischsten Messgrößen des Fahrzeuges sind seine Position und Geschwindigkeit. Anhand der gegebenen Zustandsgleichungen und aus logischen Überlegungen erkennt man eine starke Abhängigkeit zu allen gesuchten Parametern. Die Geschwindigkeitsmessung wird dabei intern vom Fahrzeug bereit gestellt. Sie wird ähnlich realisiert, wie die an einem Fahrrad. Durch auf den Rädern befestigte Neodymmagneten wird ein Magnetfeld aufgebaut, das durch Hall-Sensoren gemessen werden kann. Das Magnetfeld am Hall-Sensor ändert sich, sobald die Räder anfangen zu rotieren. Die Änderung des Magnetfeldes über die Zeit kann direkt in eine Geschwindigkeit umgerechnet werden. Eine Erhöhung der Anzahl von Magneten ermöglicht dabei eine beliebig hohe Auflösung der Geschwindigkeitsmessung. \\
+
+(Bild)\\ 
+
+Für die Positionsbestimmung wurde ein Testfeld gebaut und das Tracking mittels Kamera durchgeführt. Die technischen Anforderungen an das Tracking sind dabei ein ausreichend großes Testfeld, sowie eine geeignete Kamera zu wählen. Bei der Wahl der Kamera muss auf verschiedene Anforderungen Rücksicht genommen werden, die vor einem Kauf klar definiert werden müssen. In dem Fall eines sich schnell bewegenden Fahrzeuges ist die Bilderanzahl pro Sekunde für die Kaufentscheidung sehr hoch zu gewichten, um Bewegungsunschärfe und fehlende Bewegungen zwischen zwei Bilder zu minimieren, welche die Messungen verfälschen können. Desweiteren spielt die Auflösung für Positionsgenauigkeit und die Schnittstellen der Kamera für hohe Datenraten ein große Rolle. 
+
+(Skizze vom Aufbau + Formel Pixel pro Meter)
+
+Nach dem Aufbau des Parcours und der Installation der Kamera, muss die Kamera Kalibriert werden. Ein gängiges Verfahren zur Beseitigung der Linsenkrümmung und der perspektivischen Verzerrung ist die Kalibrierung mittels Schachbrettmuster, wodurch Symmetrien wiederhergestellt werden.  
+
+(Bilder vom Parcours vor der Entzerrung und danach und parallel dazu die Formeln für AntiKrümmung und AntiPerspektive)
+
+\subsubsection{Synchronisierung interner und externen Messdaten}
+Nach der Aufnahme der externen und internen Messwerte, müssen diese für den ODE-Solver aufbereitet werden. Die Aufnahme der Messungen erfolg dabei durch ein mächtiges Framework names ROS (Robot Operating System), welches alle Messungen über einen Server koordiniert und den Zeitpunkte einer jeder Messung protokolliert. Da die externen Positionsdaten der Kamera einen Takt von 50 Hz und die internen der Geschwindigkeitsmessungen einen Takt von 100 Hz haben, sind diese nicht koexistent. Um diese Daten miteinander zu synchronisieren wurde die Methode der linearen Approximation gewählt, um zu jedem Zeitpunkt Messdaten vorrätig zu haben. Dies ermöglicht einen unkomplizierten Umgang der Daten in einem ODE-Solver. 
+
+(Formel)
+
+\subsubsection{Anwendung von Schätzverfahren}
+Die zur Schätzung benötigten Messwerte ...Die Benutzung von Schätzverfahren erolgt mithilfe von zwei Optimierungsverfahren, inklusive einer für beide Verfahren einheitliche Kostenfunktion, zur redundanten Validierung eines gefundenen Satz von Parametern.  
+
+\subsubsection{Ergebnisse}
+In der Anwendung der Schätzverfahren revidierten sich einige der Annahmen aus \cite{VikAnd} und es mussten teilweise neue getroffen werden, um bessere Ergebnisse zu erreichen. Zum Beispiel wurde die Annahme getroffen, dass die Schräglaufübersetzung $C_{\alpha}$ von Vorder- und Hinterräder gleich ist. Jedoch ergaben sich bei einer Trennung der Schräglaufübersetzung von Vorder- und Hinterräder eindeutig bessere Ergebnisse. Zudem musste ein weiterer Parameter $\eta_M$ eingeführt werden, um den Wirkungsgrad des Drehmomentes zu beschreiben, welches vom Motor erzeugt auf die Räder geleitet wird. Somit ergaben sich folgende Parameter, die das Modell mit einer ausreichenden Genauigkeit beschreiben: 
+
+\begin{table}[h!]
+\centering
+\begin{tabularx}{\columnwidth}{m{7cm}|m{4cm}|X}
+  \textbf{Physikalische Größe} & \textbf{Exakter Wert}& \textbf{Einheit}\\\hline\hline 
+	\rule{0pt}{1mm} & &\\
+	Kraftverteilung Vorder- zu Hinterrad& $\gamma=0,5$ & $[\text{-}]$\\
+	Reibungskoeffizient& $f_R=1,857$ & $[\text{-}]$\\
+	Schräglaufübersetzung hinten& $C_{h,\alpha}=0,93$ & $[\text{-}]$\\
+  	Schräglaufübersetzung vorn& $C_{v,\alpha}=1,1$ & $[\text{-}]$\\
+  	Wirkungsgrad Drehmoment Motor $\rightarrow$ Räder& $\eta_M=0,55$ & $[\text{-}]$\\
+	Zeitl. Verzögerung von $u_{1}$& $T_{V}=0,1$ & $[\text{s}]$
+\end{tabularx}
+\caption{Ergebnisse der geschätzten Parameter. \label{tab:ParSch}}
+\end{table} 
+
+(Bild Ergbnis Realität zu Simulation mit geschätzten Parametern, Aussage "`ausreichend"' definieren - sprich das Modell kann dem realen System für 2 Meter exakt auf ... Metern folgen, dass reicht aus um die MPC für einen Zeithorizont von ... Sekunden bei der Geschwindigkeit von ... M/s zu auszulegen. Da wir auch nicht mehr von der Wahrnehmung erhalten, ergibt sich eine korrekte Vorhersage)
