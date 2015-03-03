@@ -2,9 +2,46 @@
 % Encoding: UTF-8
 
 
+@Standard{Calib,
+  Title                    = {Camera Calibration Toolbox for Matlab},
+  Organization             = {Intel Corporation},
+  Author                   = {{Jean-Yves Bouguet}},
+  Month                    = {Oktober},
+  Url                      = {http://www.vision.caltech.edu/bouguetj/calib_doc/index.html},
+  Year                     = {2004},
+
+  Owner                    = {andre},
+  Timestamp                = {2015.03.02}
+}
+
+@Article{Peter,
+  Title                    = {MATLAB and Octave Functions for Computer Vision and Image Processing},
+  Author                   = {{P. Kovesi}},
+  Year                     = {2005},
+
+  Month                    = {Februar},
+
+  Owner                    = {andre},
+  Timestamp                = {2015.03.03},
+  Url                      = {http://www.csse.uwa.edu.au/~pk/research/matlabfns/}
+}
+
+@Article{Galway,
+  Title                    = {Distance Determination for an Automobile Environment using Inverse Perspective Mapping in OpenCV},
+  Author                   = {{S. Tuohy and D.O’Cualain and E. Jones and M.Glavin}},
+  Journal                  = {ISSC},
+  Year                     = {2010},
+
+  Month                    = {June},
+
+  Owner                    = {andre},
+  Timestamp                = {2015.03.03},
+  Url                      = {http://www.shanetuohy.com/fyp/Images/issc.pdf}
+}
+
 @Article{TimMar,
   Title                    = {Entwicklung einer Karosserie für das oTToCar},
-  Author                   = {Tim Rose, Marcus Treseler},
+  Author                   = {{T. Rose, M. Treseler}},
   Year                     = {2014},
 
   Month                    = {November},
@@ -15,13 +52,25 @@
 
 @Article{VikAnd,
   Title                    = {oTToCAR, Interdisziplinäres Teamprojekt},
-  Author                   = {Viktoria Wiedmeier, Andreas Himmel},
+  Author                   = {{V. Wiedmeier and A. Himmel}},
   Year                     = {2013},
 
   Month                    = {November},
 
   Owner                    = {andre},
   Timestamp                = {2015.02.19}
+}
+
+@TechReport{Zhang,
+  Title                    = {A Flexible New Technique for Camera Calibration},
+  Author                   = {{Zhengyou Zhang}},
+  Institution              = {Microsoft Research, Microsoft Corporation},
+  Year                     = {1998},
+  Month                    = {Dezember},
+
+  Owner                    = {andre},
+  Timestamp                = {2015.03.03},
+  Url                      = {http://research.microsoft.com/en-us/um/people/zhang/Papers/TR98-71.pdf}
 }
 
 @Electronic{TT01,

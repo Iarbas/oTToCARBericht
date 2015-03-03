@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.11.11)  27 FEB 2015 13:19
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.11.11)  3 MAR 2015 15:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -948,7 +948,7 @@ LaTeX Info: Redefining \nameref on input line 43.
 \openout3 = `oTToCARBericht.out'.
 
 
-<Bilder/STAC.png, id=31, 125.01683pt x 68.50237pt>
+<Bilder/STAC.png, id=34, 125.01683pt x 68.50237pt>
 File: Bilder/STAC.png Graphic file (type png)
  <use Bilder/STAC.png>
 Package pdftex.def Info: Bilder/STAC.png used on input line 46.
@@ -994,13 +994,13 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 46.
 
-<Bilder/Otto.png, id=33, 503.63156pt x 506.6428pt>
+<Bilder/Otto.png, id=36, 503.63156pt x 506.6428pt>
 File: Bilder/Otto.png Graphic file (type png)
  <use Bilder/Otto.png>
 Package pdftex.def Info: Bilder/Otto.png used on input line 46.
 (pdftex.def)             Requested size: 128.0374pt x 128.8018pt.
 
-<Bilder/Ottocar.png, id=34, 264.99pt x 105.996pt>
+<Bilder/Ottocar.png, id=37, 264.99pt x 105.996pt>
 File: Bilder/Ottocar.png Graphic file (type png)
  <use Bilder/Ottocar.png>
 Package pdftex.def Info: Bilder/Ottocar.png used on input line 46.
@@ -1070,7 +1070,7 @@ File: omsbch.fd
 LaTeX Font Info:    Font shape `OMS/bch/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 4.
 
-[3] <Bilder/u1Messung.png, id=75, 521.95pt x 414.54875pt>
+[3] <Bilder/u1Messung.png, id=80, 521.95pt x 414.54875pt>
 File: Bilder/u1Messung.png Graphic file (type png)
 
 <use Bilder/u1Messung.png>
@@ -1080,7 +1080,22 @@ Package pdftex.def Info: Bilder/u1Messung.png used on input line 14.
 
 LaTeX Warning: Reference `tab:physGR' on page 4 undefined on input line 20.
 
-[4 <./Bilder/u1Messung.png>]) (./oTToCARBericht.bbl
+
+Underfull \hbox (badness 10000) in paragraph at lines 41--42
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 43--44
+
+ []
+
+[4 <./Bilder/u1Messung.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 47--48
+
+ []
+
+[5] [6]) (./Kapitel3.tex) (./oTToCARBericht.bbl
 LaTeX Font Info:    Try loading font information for T1+pcr on input line 13.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
@@ -1097,7 +1112,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 25--28
  http : / / www . rcscrapyard . net / de /
  []
 
-) (./Anhang.tex) (./Selbststaendigkeitserklaerung.tex [5]
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 30--38
+[]\T1/bch/m/sc/10 Eddins\T1/bch/m/n/10 , S.:  Spa-ti-al trans-for-ma-ti-ons: De
+-fi-ning and ap-p-ly-ing cu-stom trans-forms / Ma-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--38
+\T1/bch/m/n/10 thWorks.  Version:August 2006.  []$\T1/pcr/m/n/10 http : / / blo
+gs . mathworks . com / steve / 2006 / 08 / 04 /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--38
+\T1/pcr/m/n/10 spatial-[]transformations-[]defining-[]and-[]applying-[]custom-[
+]transforms/$[]\T1/bch/m/n/10 .  2006. --
+ []
+
+) (./Anhang.tex) (./Selbststaendigkeitserklaerung.tex [8]
 Underfull \hbox (badness 10000) in alignment at lines 12--12
 [][] 
  []
@@ -1113,14 +1146,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 15--22
  []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 20.
- [6]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 20.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 21.
+ [9]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 21.
  (./oTToCARBericht.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 20.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 20.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 21.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 21.
 Package rerunfilecheck Info: File `oTToCARBericht.out' has not changed.
-(rerunfilecheck)             Checksum: 0744F1DCB94B72BA100C3D587E96E7C0;446.
+(rerunfilecheck)             Checksum: 6B5C6BC9A192741F7F54EDCE312E68A0;503.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1129,30 +1162,32 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 20.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 21.
  ) 
 Here is how much of TeX's memory you used:
- 12672 strings out of 494935
- 190209 string characters out of 6178121
- 330589 words of memory out of 5000000
- 15576 multiletter control sequences out of 15000+600000
- 82811 words of font info for 139 fonts, out of 8000000 for 9000
+ 12715 strings out of 494935
+ 190645 string characters out of 6178121
+ 330644 words of memory out of 5000000
+ 15595 multiletter control sequences out of 15000+600000
+ 86412 words of font info for 143 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 51i,14n,75p,1458b,454s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 51i,15n,75p,1458b,454s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/bitstrea/charter/bchb8a.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/bitstrea/charter/bchr8a.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courie
-r/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/urw/times/utmri8a.pfb>
-Output written on oTToCARBericht.pdf (6 pages, 379644 bytes).
+ts/type1/bitstrea/charter/bchri8a.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+urw/times/utmri8a.pfb>
+Output written on oTToCARBericht.pdf (9 pages, 418104 bytes).
 PDF statistics:
- 153 PDF objects out of 1000 (max. 8388607)
- 123 compressed objects within 2 object streams
- 24 named destinations out of 1000 (max. 500000)
- 77 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 215 PDF objects out of 1000 (max. 8388607)
+ 180 compressed objects within 2 object streams
+ 41 named destinations out of 1000 (max. 500000)
+ 85 words of extra memory for PDF output out of 10000 (max. 10000000)
 
