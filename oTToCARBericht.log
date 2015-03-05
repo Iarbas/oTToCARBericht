@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.11.11)  3 MAR 2015 15:09
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.11.11)  5 MAR 2015 11:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1077,10 +1077,6 @@ File: Bilder/u1Messung.png Graphic file (type png)
 Package pdftex.def Info: Bilder/u1Messung.png used on input line 14.
 (pdftex.def)             Requested size: 142.26378pt x 112.99234pt.
 
-
-LaTeX Warning: Reference `tab:physGR' on page 4 undefined on input line 20.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 41--42
 
  []
@@ -1091,11 +1087,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 43--44
  []
 
 [4 <./Bilder/u1Messung.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 47--48
+Underfull \hbox (badness 10000) in paragraph at lines 45--47
 
  []
 
-[5] [6]) (./Kapitel3.tex) (./oTToCARBericht.bbl
+[5] [6]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+) (./Kapitel3.tex) (./oTToCARBericht.bbl
 LaTeX Font Info:    Try loading font information for T1+pcr on input line 13.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
@@ -1106,13 +1106,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 11--15
 g / wiki / File : Protractor _ Rapporteur _
  []
 
-
+[7]
 Underfull \hbox (badness 10000) in paragraph at lines 25--28
 []|   []   |   []   |   []   |   []   |   []\T1/bch/m/n/10 .  []$\T1/pcr/m/n/10
  http : / / www . rcscrapyard . net / de /
  []
 
-[7]
+
 Underfull \hbox (badness 10000) in paragraph at lines 30--38
 []\T1/bch/m/sc/10 Eddins\T1/bch/m/n/10 , S.:  Spa-ti-al trans-for-ma-ti-ons: De
 -fi-ning and ap-p-ly-ing cu-stom trans-forms / Ma-
@@ -1159,19 +1159,16 @@ Package rerunfilecheck Info: File `oTToCARBericht.out' has not changed.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.55997pt have occurred.
 
-
-LaTeX Warning: There were undefined references.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 21.
  ) 
 Here is how much of TeX's memory you used:
- 12715 strings out of 494935
- 190645 string characters out of 6178121
- 330644 words of memory out of 5000000
- 15595 multiletter control sequences out of 15000+600000
- 86412 words of font info for 143 fonts, out of 8000000 for 9000
+ 12717 strings out of 494935
+ 190651 string characters out of 6178121
+ 333644 words of memory out of 5000000
+ 15594 multiletter control sequences out of 15000+600000
+ 88276 words of font info for 146 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 51i,15n,75p,1458b,454s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 51i,15n,75p,1595b,454s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/bitstrea/charter/bchb8a.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/bitstrea/charter/bchr8a.pfb></usr/share/texlive/texmf-dist/fon
@@ -1182,12 +1179,13 @@ fonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-urw/times/utmri8a.pfb>
-Output written on oTToCARBericht.pdf (9 pages, 418104 bytes).
+st/fonts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
+rw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8
+a.pfb>
+Output written on oTToCARBericht.pdf (9 pages, 424254 bytes).
 PDF statistics:
- 215 PDF objects out of 1000 (max. 8388607)
- 180 compressed objects within 2 object streams
+ 221 PDF objects out of 1000 (max. 8388607)
+ 185 compressed objects within 2 object streams
  41 named destinations out of 1000 (max. 500000)
  85 words of extra memory for PDF output out of 10000 (max. 10000000)
 
