@@ -42,16 +42,11 @@
 \renewcommand{\ddot}[1]{%
   \accentset{\mbox{\large .\hspace{-0.2ex}.}}{#1}}
 
-% Andreas sein Zeug
-%\usepackage[left=2.5cm,right=2.5cm,top=3cm,bottom=3cm]{geometry}                                   % Geometrie
-%\usepackage[usenames,dvipsnames]{color}                                                            % keine Ahnung
-%\usepackage{xcolor}                                                                                %
-%\usepackage{colortbl}                                                                              %
-%\usepackage{hyperref}   %nicht verwenden                                                           %
-%\hypersetup{colorlinks=true, linkcolor=black, citecolor=blue, filecolor=blue, urlcolor=blue}       %
-%\usepackage{framed}                                                                                %
-%\usepackage{supertabular}                                                                          %
-
+% Zeug fuer die PGF-Plots: http://wordpress.alphao.org/2013/07/26/how-to-plot-matlab-figures-with-latex-using-pgfplots-and-csv-formatted-data-file/
+\usepackage[margin=0em]{geometry}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.8}
 
 % Einstellungen
 \usepackage{parskip}                                 % Einzug aus, Absatzabstand ein

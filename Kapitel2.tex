@@ -138,9 +138,26 @@ Unter der Verwendung der gemessenen Zustände $y_{mess} = \left \{x_1, x_2, \phi
 \begin{align*}
 J = \sum_{t=0}^{t_{end}}\sum_{k = 1}^{5} q_k\cdot  \left (y_{mess, k}\left ( t \right ) - y_{sim, k}\left ( t \right )  \right )^2
 \end{align*}
-Zur Optimierung wurden zwei Ansätze verfolgt um ein Optimum gewährleisten zu können. Zum einen wurde die Matlab interne Funktion \textit{fmincon} und zum anderen ein selbst entwickelter Partikel-Schwarm-Algorithmus verwendet. Dabei galt es den zu schätzende Parametervektor $p=\left \{ \gamma, f_R, C_{\alpha}, T_V\right \}$, bestehend aus dem Verhältnis der Kraftübertragung zwischen Vorder- und Hinterräder $\gamma$, dem Rollwiderstand $f_R$, der Schräglaufübersetzung $C_{\alpha}$ und der zeitlichen Verzögerung des Lenkeinschlages $T_V$, zu bestimmen. Um die Dimension des Vektors zu reduzieren, wurde schon in \cite{VikAnd} angedacht den Rollwiderstand allein durch eine Geradeausfahrt zu bestimmen, da die anderen Parameter lediglich Einfluss auf die Zustände während Kurvenfahrten besitzen. Diese Trennung der Parameterschätzung ermöglichte es, ein optimales $f_R$ zu finden, sodass in den Kurvenfahrten alle weiteren Parameter bestimmt werden  konnten und beide Optimierungsverfahren stets in das gleiche Optimum liefen.
-
-(Bild des Generationenverlaufes)  
+\begin{wrapfigure}{r}{8cm} 
+\pgfplotstableread[col sep=comma]{Plotdaten/GenerationLokal.dat} \GenerationLokal
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+	xlabel={Generation},
+	ylabel={Gütemaß},
+	width=0.4\paperwidth, height=0.2\paperheight,
+	xmin=1, xmax=20,
+	ymin=0
+]
+\foreach \yindex in {1,...,100}{ 
+	\addplot+[mark=none] table [x index=0,y index=\yindex] from \GenerationLokal; 
+}
+\end{axis}
+\end{tikzpicture}
+\caption{Kosten aller Partikel}
+\label{pict:PSOallePart}
+\end{wrapfigure}
+Zur Optimierung wurden zwei Ansätze verfolgt um ein Optimum gewährleisten zu können. Zum einen wurde die Matlab interne Funktion \textit{fmincon} und zum anderen ein selbst entwickelter Partikel-Schwarm-Algorithmus nach \cite{PSO} verwendet. Dabei galt es den zu schätzende Parametervektor $p=\left \{ \gamma, f_R, C_{\alpha}, T_V\right \}$, bestehend aus dem Verhältnis der Kraftübertragung zwischen Vorder- und Hinterräder $\gamma$, dem Rollwiderstand $f_R$, der Schräglaufübersetzung $C_{\alpha}$ und der zeitlichen Verzögerung des Lenkeinschlages $T_V$ zu bestimmen. Um die Dimension des Vektors zu reduzieren, wurde schon in \cite{VikAnd} angedacht den Rollwiderstand allein durch eine Geradeausfahrt zu schätzen, da die anderen Parameter lediglich Einfluss auf die Zustände während Kurvenfahrten besitzen. Diese Trennung der Parameterschätzung ermöglichte es, ein optimales $f_R$ zu finden, sodass in den Kurvenfahrten alle weiteren Parameter bestimmt werden konnten und beide Optimierungsverfahren stets in das gleiche Optimum liefen. In \ref{pict:PSOallePart} wurde als Beispiel ein solcher Optimierungsaufruf durch den Partikel-Schwarm-Algorithmus dargestellt. Zu sehen der Verlauf der Kostenfunktion über jede neue Generation von Partikeln bei einer Geradeausfahrt für den Zustand $f_R$. Dabei wird sehr gut die Konvergenz vom Algorithmus ersichtlich. Die qualitativen Ergebnisse für die modellbasierte Berechnung aller Zustände befinden sich im Anhang. 
 
 \subsubsection{Ergebnisse}
 In der Anwendung der Schätzverfahren revidierten sich einige der Annahmen aus \cite{VikAnd} und es mussten teilweise neue getroffen werden, um bessere Ergebnisse zu erreichen. Zum Beispiel wurde die Annahme getroffen, dass die Schräglaufübersetzung $C_{\alpha}$ von Vorder- und Hinterräder gleich ist. Jedoch ergaben sich bei einer Trennung der Schräglaufübersetzung von Vorder- und Hinterräder eindeutig bessere Ergebnisse. Zudem musste ein weiterer Parameter $\eta_M$ eingeführt werden, um den Wirkungsgrad des Drehmomentes zu beschreiben, welches vom Motor erzeugt auf die Räder geleitet wird. Somit ergaben sich folgende Parameter, die das Modell mit einer ausreichenden Genauigkeit beschreiben: 

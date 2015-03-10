@@ -5,7 +5,5 @@
 \contentsline {subsubsection}{\numberline {2.2.1}Geschwindigkeits- und Positionsmessung}{4}{subsubsection.2.2.1}
 \contentsline {subsubsection}{\numberline {2.2.2}Synchronisierung interner und externen Messdaten}{7}{subsubsection.2.2.2}
 \contentsline {subsubsection}{\numberline {2.2.3}Sch\IeC {\"a}tzverfahren}{7}{subsubsection.2.2.3}
-\contentsline {subsubsection}{\numberline {2.2.4}Ergebnisse}{7}{subsubsection.2.2.4}
-\contentsline {section}{\numberline {3}Modellpr\IeC {\"a}diktive Regelung}{8}{section.3}
-\contentsline {section}{Literaturverzeichnis}{8}{section.3}
-\contentsline {section}{\numberline {A}Zeugs}{9}{appendix.A}
+\contentsline {subsubsection}{\numberline {2.2.4}Ergebnisse}{8}{subsubsection.2.2.4}
+\contentsline {section}{Literaturverzeichnis}{8}{table.caption.4}
