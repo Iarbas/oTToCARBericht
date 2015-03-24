@@ -1,2 +1,33 @@
+\begin{comment}
 \section{Modellprädiktive Regelung}
-Schreib Hannes, schreib!
+Allgemeines zu MPC
+\\
+\subsection{Grundlagen der modellprädiktiven Regelung}
+Systemgleichung oft in zeitdiskreter Form, da Optimierung in kontinuierlicher Form meist komplexer
+\begin{align}
+  Systemgleichungen
+\end{align}
+Ausgehend von $x(k)$ dem aktuellen Zustand des Systems, der wenn nicht messbar geschätzt werden muss, wird anhand des Systemmodells das zukünftige Systeverhalten
+\begin{align}
+  Sequenz von Zuständen
+\end{align}
+bis zum Prädiktionshorizont $n_p$ unter der Optimierung einer Sequenz von Eingängen
+\begin{align}
+  Sequenz von Eingängen
+\end{align}
+bis zum Stellhorizont $n_c$ vorhergesagt. Aus der gefundenen optimalen Eingangssequenz $u*$ wird der erste Eintrag $u*(k)$ auf das zu regelnde System angewandt.\\
+Nach der Zeit $\delta t$ kann der neue Zustand gemessen werden und die Optimierung beginnt von neuem.\\
+Kostenfunktion meist quadratisch.
+\begin{align}
+  quadratische Kostenfunktion
+\end{align}
+Linear MPC/Nonlinear MPC\\
+Beschränkungen
+\subsection{Konkrete Umsetzung der modellprädiktiven Regelung am oTToCAR}
+
+Vereinfachungen\\
+Stabilität\\
+Skalierbarkeit\\
+online Tuning mit dynamic reconfigure (welche Parameter)\\
+\subsection{Zukünftige Schritte}
+\end{comment}
