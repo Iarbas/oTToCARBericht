@@ -1,12 +1,13 @@
-\section{Modellpr\"adiktive Regelung}
+\section{Modellprädiktive Regelung}
 Allgemeines zu MPC
+Allerdings ergeben sich auch Schwierigkeiten bei der Verwendung von modellprädiktiven Regelungen. Zum einen ist die Konvergenz der Optimierung gegen einen optimalen Wert für die Eingangsgröße und die Stabiltät des geschlossenen Kreises oft nur schwierig nachweisbar und zum anderen stellt das schnelle Online-Lösen des oft hochdimensionalen Optimierungsproblems eine Herausforderung dar.
 \\
 \subsection{Grundlagen der modellprädiktiven Regelung}
-Systemgleichung oft in zeitdiskreter Form, da Optimierung in kontinuierlicher Form meist komplexer
+Im realen Anwenungsfall des oTToCAR-Projekts eignet sich eine Systemdarstellung in zeitdiskreter Form mehr als in kontinuierlicher Form, bei der die Optimierung außerdem meist komplexer ist. Demnach liegen die Systemgleichung in folgender Form vor:
 \begin{align}
   Systemgleichungen
 \end{align}
-Ausgehend von $x(k)$ dem aktuellen Zustand des Systems, der wenn nicht messbar geschätzt werden muss, wird anhand des Systemmodells das zukünftige Systeverhalten
+Ausgehend vom aktuellen Zustand $x(k)$ des zu regelnden Systems, der wenn nicht messbar geschätzt werden muss, wird anhand des Systemmodells das zukünftige Systemverhalten
 \begin{align}
   Sequenz von Zuständen
 \end{align}
@@ -14,18 +15,29 @@ bis zum Prädiktionshorizont $n_p$ unter der Optimierung einer Sequenz von Eing�
 \begin{align}
   Sequenz von Eingängen
 \end{align}
-bis zum Stellhorizont $n_c$ vorhergesagt. Aus der gefundenen optimalen Eingangssequenz $u*$ wird der erste Eintrag $u*(k)$ auf das zu regelnde System angewandt.\\
-Nach der Zeit $\delta t$ kann der neue Zustand gemessen werden und die Optimierung beginnt von neuem.\\
-Kostenfunktion meist quadratisch.
+bis zum Stellhorizont $n_c$ vorhergesagt. Aus der gefundenen optimalen Eingangssequenz $u^*$ wird der erste Eintrag $u^*(k)$ auf das zu regelnde System angewandt. Nach der Zeit $\delta t$ kann der neue Zustand gemessen werden und die Optimierung beginnt von neuem.\\ \\
+Bei der Optimierung wird meist eine quadratische Kostenfunktion mit $x(k)$ und $u(k)$ als Optimierungsvariablen aufgestellt:
 \begin{align}
   quadratische Kostenfunktion
 \end{align}
+Wobei die Wichtungtungen Vorausetzungen erfüllen müssen.\\
 Linear MPC/Nonlinear MPC\\
 Beschränkungen
 \subsection{Konkrete Umsetzung der modellprädiktiven Regelung am oTToCAR}
+u setzt sich zusammen aus Stellgröße Servo für den Lenkeinschlag und Stellgröße für den Motor für die Beschleunigung. Dabei wird n Schritte in die Zukunft geschaut, woraus ein Optimierungsvektor der Dimension R=irgendwas resultiert. Je größer man n wählt, desto besser lässt sich z.B. die Geschwindigkeit in Abhängigkeit zur Entfernung und Krümmung einer bevorstehenden Kurve ">anpassen"< oder Schwierigkeiten beim Durchfahren einer S-Kurve überwinden. Allerdings nimmt dadurch auch die Komplexität der Optimierung zu und man stößt schnell an die Grenzen der verfügbaren Rechenzeit/Recourcen.
 
 Vereinfachungen\\
+Aktuell wird die Motorsteuergröße nicht mitoptimiert und der Prädiktionshorizont beträgt 1. In dieser Konfiguration gibt es sicher Algorithmen wie LQR die Äquivalente Lösungen liefern und dabei besser nachweisbare Stabilität aufweisen. Es wurde sich trotzdem für die vereinfachte Variante entschieden, um diese in Zukunft so wie geplant zu erweitern.
 Stabilität\\
+Um Sicher zu gehen, dass der Algorithmus immer gegen ein Optimum konvergiert wurde die in implementierten Fall skalare Kostenfunktionen in der Parcour fahrt in möglichst vielen denkbaren Positionen aufgenommen und überprüft, dass sich kein Fall ergibt, in dem das Optimierungsproblem in relevanten Bereich nicht convex ist.
+\\
+Parabeln
+\\
+Es genügt den Scheitelpunkt der approximierten Variablen zu berechnen. genau genug.
 Skalierbarkeit\\
-online Tuning mit dynamic reconfigure (welche Parameter)\\
+Scheitelpunkt -> Newtonschritt der quadratischen Kostenfunktion
+Aufwand\\
+Nochmal überlegen\\
+In der Vorbereitung auf den Wettkampf hat sich herausgestellt, dass die kurzen Testzeiten auf der Originalstrecke gut ausgenutzt werden muss. Dazu musste vorher extrahiert werden, welche Parameter entscheidenen Einfluss auf die Güte haben. Diese konnten dann online während der Fahrt mit dem dynamic reconfigure Paket getuned werden. (welche Parameter)\\
 \subsection{Zukünftige Schritte}
+Geschwindigkeit, mehrere Schritte in die Zukunft, Erstellung einer Karte mit Gewichtung der Confidence der Polylinien
