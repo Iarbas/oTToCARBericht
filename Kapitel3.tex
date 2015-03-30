@@ -4,20 +4,31 @@ Modellprädiktive Regelung ist quasi eine iterative Berechnung einer optimalen S
 \subsection{Grundlagen der modellprädiktiven Regelung}
 Im realen Anwenungsfall des oTToCAR-Projekts eignet sich eine Systemdarstellung in zeitdiskreter Form mehr als in kontinuierlicher Form, bei der die Optimierung außerdem meist komplexer ist. Demnach liegen die Systemgleichung in folgender Form vor:
 \begin{align}
-  Systemgleichungen
+  \boldsymbol{x}(k+1)&=\boldsymbol{f}\left ( \boldsymbol{x}(k), \boldsymbol{u}(k) \right )\\
+	\boldsymbol{y}(k)&=\boldsymbol{g}\left ( \boldsymbol{x}(k) \right )\\
+	mit\\
+	&\boldsymbol{x}(k) \in \mathcal{X}\subset\mathbb{R}^n\\
+	&\boldsymbol{u}(k) \in \mathcal{U}\subset\mathbb{R}^m\\
+	&\boldsymbol{y}(k) \in \mathcal{Y}\subset\mathbb{R}^r
 \end{align}
 Ausgehend vom aktuellen Zustand $x(k)$ des zu regelnden Systems, der wenn nicht messbar geschätzt werden muss, wird anhand des Systemmodells das zukünftige Systemverhalten
 \begin{align}
-  Sequenz von Zuständen
+  \left\{ \boldsymbol{x}(k+1),\dots,\boldsymbol{x}(k+n_p)\right\}
 \end{align}
 bis zum Prädiktionshorizont $n_p$ unter der Optimierung einer Sequenz von Eingängen
 \begin{align}
-  Sequenz von Eingängen
+  \boldsymbol{u}=\left\{ \boldsymbol{u}(k),\dots,\boldsymbol{u}(k+n_c-1)\right\}
 \end{align}
 bis zum Stellhorizont $n_c$ vorhergesagt. Aus der gefundenen optimalen Eingangssequenz $u^*$ wird der erste Eintrag $u^*(k)$ auf das zu regelnde System angewandt. Nach der Zeit $\delta t$ kann der neue Zustand gemessen werden und die Optimierung beginnt von neuem.\\ \\
 Bei der Optimierung wird meist eine quadratische Kostenfunktion mit $x(k)$ und $u(k)$ als Optimierungsvariablen aufgestellt:
 \begin{align}
-  quadratische Kostenfunktion
+	\underset{\boldsymbol{u}}{\text{min}}\;J:=\sum_{i=k}^{k+n_p-1}l(\boldsymbol{x}(i),\boldsymbol{u}(i)))+F(\boldsymbol{x}(k+n_p))\\
+	\underset{\boldsymbol{u}}{\text{min}}\;J:=\sum_{i=k}^{k+n_p-1}l(\boldsymbol{x}(i),\boldsymbol{u}(i)))+F(\boldsymbol{x}(k+n_p))\\
+	\underset{\boldsymbol{u}}{\text{min}}\;J:=\sum_{i=k+1}^{k+n_p}\left \| \boldsymbol{x}(i)-\boldsymbol{x}_r(i)  \right \|_{Q}^{2} +\sum_{i=k}^{k+n_c-1}\left \| \boldsymbol{u}(i) \right \|_{R}^{2}\\
+	\underset{\boldsymbol{u}}{\text{min}}\;J:=\left \| \boldsymbol{x}_p(k)-\boldsymbol{x}_r(k)  \right \|_{Q}^{2} +\left \| \Delta\boldsymbol{u}(k) \right \|_{R}^{2}\\
+	\boldsymbol{x}_p(k)&=\left [ \boldsymbol{x}_p(k+1\mid k),\dots,\boldsymbol{x}_p(k+n_p\mid k) \right ]^T\\
+	\boldsymbol{x}_r(k)&=\left [ \boldsymbol{x}_r(k+1),\dots,\boldsymbol{x}_r(k+n_p) \right ]^T\\
+	\Delta\boldsymbol{u}(k)&=\left [ \Delta\boldsymbol{u}(k),\dots,\Delta\boldsymbol{u}(k+n_u-1) \right ]^T
 \end{align}
 Wobei die Wichtungtungen Vorausetzungen erfüllen müssen.\\
 Linear MPC/Nonlinear MPC\\
