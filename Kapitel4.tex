@@ -49,6 +49,11 @@ Um diese Polylinien als Referenztrajektorie für die MPC nutzen zu können, werd
 Kostenfunktion angepasst $x_p(i)-x_r((i-k)\Delta t)$
 Das Modell liefert als $x_1$ und $x_2$ die Position des Autos auf einer globalen Karte und den Gierwinkel dazu. Da bisher noch keine globale Karte implementiert ist, wird jedes Mal, wenn eine neue Polylinie vorhanden ist die Pseudo-Weltkarte auf das Vehicle Reference Frame zurück gesetzt (Fahrzeugposition und Gierwinkel auf 0 setzen.) Es ist dann kurzeitig möglich, wenn keine neue Polylinie vorhanden ist, weiter an der letzten Referenztrajektorie weiter zu fahren, in dem man x(k) mit Hife des Modells schätzt.\\ \\
 Referenz visualisieren: Plot der Punkte der Polylinie mit eingetragener Prädiktion des optimalen Lenkeinschlags\\
+\begin{figure}[t]
+\centering
+\includegraphics[scale=0.53]{Bilder/Reference.png}
+\caption{Veranschaulichung der Referenztrajektorie und des prädizierten Verhaltens}
+\end{figure}
 \subsubsection{Vereinfachungen}
 Aktuell wird die Motorsteuergröße nicht mitoptimiert und der Prädiktionshorizont beträgt 1. In dieser Konfiguration gibt es sicher Algorithmen wie LQR die Äquivalente Lösungen liefern und dabei besser nachweisbare Stabilität aufweisen. Es wurde sich trotzdem für die vereinfachte Variante entschieden, um diese in Zukunft so wie geplant zu erweitern.\\ \\
 Es genügt den Scheitelpunkt der approximierten Variablen zu berechnen. genau genug.\\
