@@ -38,27 +38,38 @@ Mit den Vektoren
 und dazugehörigen Wichtungsmatrizen $\boldsymbol{Q}_i\;(i=1, ...,n_p)$ und $\boldsymbol{R}_j\;(j=0, ...,n_c-1)$, die folgende Vorausetzungen erfüllen müssen.\\
 Linear MPC/Nonlinear MPC\\
 Beschränkungen
-\subsection{Konkrete Implementierung der Fahrspurregelung am oTToCAR}
-u setzt sich zusammen aus Stellgröße Servo für den Lenkeinschlag und Stellgröße für den Motor für die Beschleunigung. Dabei wird n Schritte in die Zukunft geschaut, woraus ein Optimierungsvektor der Dimension R=irgendwas resultiert. Je größer man n wählt, desto besser lässt sich z.B. die Geschwindigkeit in Abhängigkeit zur Entfernung und Krümmung einer bevorstehenden Kurve ">anpassen"< oder Schwierigkeiten beim Durchfahren einer S-Kurve überwinden. Allerdings nimmt dadurch auch die Komplexität der Optimierung zu und man stößt schnell an die Grenzen der verfügbaren Rechenzeit/Recourcen.\\ \\
+\subsection{Konkrete Implementierung der Fahrspurregelung für das oTToCAR}
+Die konkrete Implementierung der Fahrspurregelung auf der Recheneinheit des oTToCARs macht weitere Vorabeit, wie das erstellen der Referenztrajektorie und Anpassungen des allgemeinen Anstatzes für die MPC wie gewisse Vereinfachungen, um die Regelung mit einer Rate von 50Hz betreiben zu können, nötig.
+\subsubsection{Dimension der Optimierungsvariable}
+Als Systemeingänge für das Fahrzeugmodell sind eine abstrakte Entsprechung des Motordrehmoments $u_1=...$ und der Lenkeinschlag der Räder $u_2=...$ vorhanden, demnach ergibt sich der Stellgrößenvektor zum Zeitpunkt $k$ zu $\boldsymbol{u}(k)=[u_1(k), u_2(k)]^T$. Da sich die prädizierten Zustände $\boldsymbol{x}_p$ aus den Gleichungsnebenbedingungen berechnen lassen, ergibt sich die Diemension der Optimierungsvariable also zu $2\cdot n_c$.
+Je größer man $n_c$ wählt, desto besser lässt sich z.B. die Geschwindigkeit in Abhängigkeit zur Entfernung und Krümmung einer bevorstehenden Kurve begrenzen oder Schwierigkeiten beim Durchfahren von S-Kurven bewältigen. Allerdings nimmt dadurch auch die Dimension der Optimierungsvariable zu, was dazu führt, dass die Grenzen der verfügbaren Rechenzeit zum Lösen des Optimierungsproblems während der Laufzeit schnell erreicht werden.
+\subsubsection{Referenztrajektorie}
 Verarbeitung der Polylinien\\
 Interpolation\\
 Parameter s aus der Geschwindigkeit bestimmen\\
-An Polylinien entlang fahren\\ \\
-Vereinfachungen\\
-Aktuell wird die Motorsteuergröße nicht mitoptimiert und der Prädiktionshorizont beträgt 1. In dieser Konfiguration gibt es sicher Algorithmen wie LQR die Äquivalente Lösungen liefern und dabei besser nachweisbare Stabilität aufweisen. Es wurde sich trotzdem für die vereinfachte Variante entschieden, um diese in Zukunft so wie geplant zu erweitern.
-Stabilität\\
+An Polylinien entlang fahren\\
+keine neue Polylinie
+\subsubsection{Vereinfachungen}
+Aktuell wird die Motorsteuergröße nicht mitoptimiert und der Prädiktionshorizont beträgt 1. In dieser Konfiguration gibt es sicher Algorithmen wie LQR die Äquivalente Lösungen liefern und dabei besser nachweisbare Stabilität aufweisen. Es wurde sich trotzdem für die vereinfachte Variante entschieden, um diese in Zukunft so wie geplant zu erweitern.\\ \\
+Es genügt den Scheitelpunkt der approximierten Variablen zu berechnen. genau genug.\\
+Skalierbarkeit\\
+Scheitelpunkt -> Newtonschritt der quadratischen Kostenfunktion\\
+Ergebniss visualisieren: Plot der Punkte der Polylinie mit eingetragener Prädiktion des optimalen Lenkeinschlags\\
+Lösen der Modellgleichungen mit konster geringer Geschwindigkeit, da für hohe Geschwindigkeiten noch keine passenden Modellparameter bestimmt werden konnten.
+\subsubsection{Stabilität}
 Um Sicher zu gehen, dass der Algorithmus immer gegen ein Optimum konvergiert wurde die in implementierten Fall skalare Kostenfunktionen in der Parcour fahrt in möglichst vielen denkbaren Positionen aufgenommen und überprüft, dass sich kein Fall ergibt, in dem das Optimierungsproblem in relevanten Bereich nicht convex ist.
 \\
 Parabeln
 \\
-Es genügt den Scheitelpunkt der approximierten Variablen zu berechnen. genau genug.
-Skalierbarkeit\\
-Hinzufügen von Beschränkungen
-Scheitelpunkt -> Newtonschritt der quadratischen Kostenfunktion
 Aufwand\\
 Nochmal überlegen\\
-Ergebniss visualisieren: Plot der Punkte der Polylinie mit eingetragener Prädiktion des optimalen Lenkeinschlags\\
+
+\subsubsection{Beschränkungen}
+Hinzufügen von ~
+\subsection{Spurwechsel}
+Polylinie um Fahrspurbreite verschieben, wenn Hindernis erkannt. MPC findet optimale Trajektorie zu den verschobenen Punkten. Problem: Fahrspur verschwindet aus Sichtfeld. Langsameres Dosierteres Spurwechseln ist keine Lösung, da Hindernisse nach einer Kurve oft erst spät erkannt werden und deshalb Spurwechsel auf kurzer Distanz nötig sind. Lösung: Orientierung auf Karte
+
+\subsection{Dynamic Reconfigure}
 In der Vorbereitung auf den Wettkampf hat sich herausgestellt, dass die kurzen Testzeiten auf der Originalstrecke gut ausgenutzt werden muss. Dazu musste vorher extrahiert werden, welche Parameter entscheidenen Einfluss auf die Güte haben. Diese konnten dann online während der Fahrt mit dem dynamic reconfigure Paket getuned werden. (welche Parameter)\\
-keine neue Polylinie\\
 \subsection{Zukünftige Schritte}
 Geschwindigkeit, mehrere Schritte in die Zukunft, Erstellung einer Karte mit Gewichtung der Confidence der Polylinien
