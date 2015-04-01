@@ -1,36 +1,38 @@
 \section{Modellprädiktive Regelung}
 Bei der modellprädiktiven Regelung (MPC) handelt es sich um eine Form der optimalen Regelung, bei der wiederholt eine Berechnung der optimalen Steuerung für ein System ausgehend von dessen aktuellem Zustand stattfindet. In vielen Bereichen finden MPCs immer häufiger Anwendung, da sie eine direkte Berücksichtigung von Beschränkungen erlauben und eine Form des strukturierten Reglerentwurfs ausgehend von der modellierten Systemdynamik darstellen. Dabei kann durch die geeignete Wahl der Kostenfunktion und deren Wichtungsparametern die Güte der des Reglers geziehlt beeinflusst werden. Allerdings ergeben sich auch Schwierigkeiten bei der Verwendung von MPCs. Zum einen ist die Konvergenz der Optimierung gegen einen optimalen Wert für die Optimierungsvariablen und die Stabiltät des geschlossenen Kreises insbesondere bei nichtlinearen Systemmodellen oft nur schwierig nachweisbar und zum anderen stellt das wiederholte Lösen des meist hochdimensionalen Optimierungsproblems während der Laufzeit in genügend schneller Geschwindigkeit eine große Herausforderung dar.
 \\
-\subsection{Grundlagen der modellprädiktiven Regelung}
-Im realen Anwenungsfall des oTToCAR-Projekts eignet sich eine Systemdarstellung in zeitdiskreter Form mehr als in kontinuierlicher Form, bei der die Optimierung außerdem meist komplexer ist. Demnach liegen die Systemgleichung in folgender Form vor:
-\begin{align}
+\subsection{Problemformulierung für die modellprädiktive Regelung}
+Im realen Anwenungsfall des oTToCAR-Projekts eignet sich eine Systemdarstellung in zeitdiskreter Form, bei der die Lösung des Optimierungsproblems weniger komplex ist und die ebenfalls zeitdiskreten Messwerte vom realen System weniger kompliziert integriert werden können. Demnach sind die diskretisierten Systemgleichungen wiefolgt gegeben:
+\begin{align*}
   \boldsymbol{x}(k+1)&=\boldsymbol{f}\left ( \boldsymbol{x}(k), \boldsymbol{u}(k) \right )\\
-	\boldsymbol{y}(k)&=\boldsymbol{g}\left ( \boldsymbol{x}(k) \right )\\
-	mit\\
-	&\boldsymbol{x}(k) \in \mathcal{X}\subset\mathbb{R}^n\\
-	&\boldsymbol{u}(k) \in \mathcal{U}\subset\mathbb{R}^m\\
-	&\boldsymbol{y}(k) \in \mathcal{Y}\subset\mathbb{R}^r
-\end{align}
+  \boldsymbol{y}(k)&=\boldsymbol{g}\left ( \boldsymbol{x}(k) \right )\\
+\end{align*}
+mit den nichtlinearen Funktionen $\boldsymbol{f}\left ( \cdot \right )$ und $\boldsymbol{g}\left ( \cdot \right )$, wobei
+\begin{align*}
+  &\boldsymbol{x}(k) \in \mathcal{X}\subset\mathbb{R}^n\\
+  &\boldsymbol{u}(k) \in \mathcal{U}\subset\mathbb{R}^m\\
+  &\boldsymbol{y}(k) \in \mathcal{Y}\subset\mathbb{R}^r
+\end{align*}
 Ausgehend vom aktuellen Zustand $x(k)$ des zu regelnden Systems, der wenn nicht messbar geschätzt werden muss, wird anhand des Systemmodells das zukünftige Systemverhalten
-\begin{align}
-  \left\{ \boldsymbol{x}(k+1),\dots,\boldsymbol{x}(k+n_p)\right\}
-\end{align}
+\begin{align*}
+  \boldsymbol{x_p}=\left\{ \boldsymbol{x}(k+1),\dots,\boldsymbol{x}(k+n_p)\right\}
+\end{align*}
 bis zum Prädiktionshorizont $n_p$ unter der Optimierung einer Sequenz von Eingängen
-\begin{align}
+\begin{align*}
   \boldsymbol{u}=\left\{ \boldsymbol{u}(k),\dots,\boldsymbol{u}(k+n_c-1)\right\}
-\end{align}
-bis zum Stellhorizont $n_c$ vorhergesagt. Aus der gefundenen optimalen Eingangssequenz $u^*$ wird der erste Eintrag $u^*(k)$ auf das zu regelnde System angewandt. Nach der Zeit $\delta t$ kann der neue Zustand gemessen werden und die Optimierung beginnt von neuem.\\ \\
-Bei der Optimierung wird meist eine quadratische Kostenfunktion mit $x(k)$ und $u(k)$ als Optimierungsvariablen aufgestellt:
-\begin{align}
-	\underset{\boldsymbol{u}}{\text{min}}\;J:=\sum_{i=k}^{k+n_p-1}l(\boldsymbol{x}(i),\boldsymbol{u}(i)))+F(\boldsymbol{x}(k+n_p))\\
-	\underset{\boldsymbol{u}}{\text{min}}\;J:=\sum_{i=k}^{k+n_p-1}l(\boldsymbol{x}(i),\boldsymbol{u}(i)))+F(\boldsymbol{x}(k+n_p))\\
-	\underset{\boldsymbol{u}}{\text{min}}\;J:=\sum_{i=k+1}^{k+n_p}\left \| \boldsymbol{x}(i)-\boldsymbol{x}_r(i)  \right \|_{Q}^{2} +\sum_{i=k}^{k+n_c-1}\left \| \boldsymbol{u}(i) \right \|_{R}^{2}\\
-	\underset{\boldsymbol{u}}{\text{min}}\;J:=\left \| \boldsymbol{x}_p(k)-\boldsymbol{x}_r(k)  \right \|_{Q}^{2} +\left \| \Delta\boldsymbol{u}(k) \right \|_{R}^{2}\\
+\end{align*}
+bis zum Stellhorizont $n_c$ vorhergesagt. Aus der gefundenen optimalen Eingangssequenz $u^*$ wird der erste Eintrag $u^*(k)$ auf das zu regelnde System angewandt. Im nächsten Zeitschritt kann der neue Zustand gemessen bzw. geschätzt werden und die Optimierung beginnt von neuem. Ziel dabei ist es einer Referenztrajektorie $x_r$ zu folgen.\\ \\
+Für das an jedem Zeitschritt $k$ zu lösende Minimierungsproblem wurde die benötigte Kostenfunktion $J$ in quadratische Form mit $x_p$ und $u$ als Optimierungsvariablen aufgestellt:
+\begin{align*}
+	\underset{\boldsymbol{x_p, u}}{\text{min}}\;J:=\sum_{i=k+1}^{k+n_p} \left [\boldsymbol{x}_{p}(i)-\boldsymbol{x}_{r}(i)\right ]^T\boldsymbol{Q}_i\left [\boldsymbol{x}_{p}(i)-\boldsymbol{x}_{r}(i)\right ] +\sum_{j=k}^{k+n_c-1} \boldsymbol{u}^T(i)\boldsymbol{R}_j\boldsymbol{u}\\
+\end{align*}
+Mit den Vektoren
+\begin{align*}
 	\boldsymbol{x}_p(k)&=\left [ \boldsymbol{x}_p(k+1\mid k),\dots,\boldsymbol{x}_p(k+n_p\mid k) \right ]^T\\
 	\boldsymbol{x}_r(k)&=\left [ \boldsymbol{x}_r(k+1),\dots,\boldsymbol{x}_r(k+n_p) \right ]^T\\
-	\Delta\boldsymbol{u}(k)&=\left [ \Delta\boldsymbol{u}(k),\dots,\Delta\boldsymbol{u}(k+n_u-1) \right ]^T
-\end{align}
-Wobei die Wichtungtungen Vorausetzungen erfüllen müssen.\\
+	\boldsymbol{u}(k)&=\left [ \boldsymbol{u}(k),\dots,\boldsymbol{u}(k+n_c-1) \right ]^T
+\end{align*}
+und dazugehörigen Wichtungsmatrizen $\boldsymbol{Q}_i\quad(i=1, ...,n_p)$ und $\boldsymbol{R}_j\quad(j=0, ...,n_c-1)$, die folgende Vorausetzungen erfüllen müssen.\\
 Linear MPC/Nonlinear MPC\\
 Beschränkungen
 \subsection{Konkrete Umsetzung der modellprädiktiven Regelung am oTToCAR}
