@@ -8,60 +8,69 @@ Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: Quellen.bib
+Warning--entry type for "iRob" isn't style-file defined
+--line 5 of file Quellen.bib
+Warning--entry type for "FotoCaro" isn't style-file defined
+--line 15 of file Quellen.bib
 Warning--entry type for "Calib" isn't style-file defined
---line 20 of file Quellen.bib
-Warning--entry type for "TT01" isn't style-file defined
---line 103 of file Quellen.bib
+--line 75 of file Quellen.bib
+Warning--entry type for "DemMan" isn't style-file defined
+--line 85 of file Quellen.bib
 Warning--entry type for "Wim" isn't style-file defined
 --line 124 of file Quellen.bib
-Warning--to sort, need author or key in RegelW
-Warning--to sort, need author or key in TT01
-Warning--to sort, need author or key in Wim
-Warning--empty author and editor in RegelW
-Warning--empty author and editor in RegelW
+Warning--entry type for "TT01" isn't style-file defined
+--line 142 of file Quellen.bib
+Warning--I didn't find a database entry for "Dobr"
+Warning--there's no year in PSO
+Warning--there's no year in Prom
+Warning--there's no year in Neva
+Warning--there's no year in Peter
 Warning--empty number in Steve
 Warning--empty note in Steve
+Warning--there's no year in Galway
+Warning--there's no year in TimMar
+Warning--there's no year in VikAnd
 Warning--empty number in Zhang
 Warning--empty note in Zhang
-You've used 11 entries,
+You've used 16 entries,
             4335 wiz_defined-function locations,
-            895 strings with 7467 characters,
-and the built_in function-call counts, 3479 in all, are:
-= -- 312
-> -- 59
-< -- 8
-+ -- 28
-- -- 16
-* -- 202
-:= -- 556
-add.period$ -- 22
-call.type$ -- 11
-change.case$ -- 30
+            920 strings with 8124 characters,
+and the built_in function-call counts, 5374 in all, are:
+= -- 456
+> -- 151
+< -- 23
++ -- 64
+- -- 46
+* -- 307
+:= -- 990
+add.period$ -- 19
+call.type$ -- 16
+change.case$ -- 55
 chr.to.int$ -- 0
-cite$ -- 20
-duplicate$ -- 137
-empty$ -- 416
-format.name$ -- 32
-if$ -- 819
+cite$ -- 27
+duplicate$ -- 198
+empty$ -- 555
+format.name$ -- 92
+if$ -- 1178
 int.to.chr$ -- 0
-int.to.str$ -- 11
-missing$ -- 46
-newline$ -- 76
-num.names$ -- 16
-pop$ -- 70
+int.to.str$ -- 16
+missing$ -- 74
+newline$ -- 96
+num.names$ -- 32
+pop$ -- 133
 preamble$ -- 1
-purify$ -- 30
+purify$ -- 55
 quote$ -- 0
-skip$ -- 161
+skip$ -- 217
 stack$ -- 0
-substring$ -- 111
-swap$ -- 22
-text.length$ -- 8
+substring$ -- 162
+swap$ -- 38
+text.length$ -- 23
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 56
-warning$ -- 9
-while$ -- 24
-width$ -- 13
-write$ -- 157
-(There were 12 warnings)
+type$ -- 64
+warning$ -- 11
+while$ -- 55
+width$ -- 18
+write$ -- 202
+(There were 18 warnings)

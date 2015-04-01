@@ -2,13 +2,39 @@
 % Encoding: UTF-8
 
 
+@Electronic{iRob,
+  Title                    = {I, Robot},
+  Author                   = {{A. Proyas (Regie)}},
+  HowPublished             = {Film (2004)},
+  Url                      = {http://www.imdb.com/title/tt0343818/},
+
+  Owner                    = {andre},
+  Timestamp                = {2015.04.01}
+}
+
+@Electronic{FotoCaro,
+  Title                    = {Carolocup 2014},
+  Author                   = {{Carolocup}},
+  Url                      = {https://wiki.ifr.ing.tu-bs.de/carolocup/wettbewerb/2014/bilder/2Trainingstag},
+
+  Owner                    = {andre},
+  Timestamp                = {2015.04.01}
+}
+
+@Booklet{RegelW,
+  Title                    = {Carolo-Cup Regelwerk 2015},
+  Author                   = {Carolocup},
+  Note                     = {Homepage Carolo-Cup: www.carolo-cup.de},
+
+  Owner                    = {andre},
+  Timestamp                = {2015.02.20},
+  Url                      = {https://wiki.ifr.ing.tu-bs.de/carolocup/system/files/Hauptwettbewerb2015.pdf}
+}
+
 @Article{PSO,
   Title                    = {Particle Swarm Optimization: Technique, System and Challenges},
-  Author                   = {{D. Rini and S. Shamsuddin and A. Yuhaniz}},
+  Author                   = {{D. Rini} and {S. Shamsuddin} and {A. Yuhaniz}},
   Journal                  = {International Journal of Computer Applications (0975–8887)},
-  Year                     = {2011},
-
-  Month                    = {Januar},
   Number                   = {1},
   Volume                   = {14},
 
@@ -17,24 +43,58 @@
   Url                      = {http://ijcaonline.net/volume14/number1/pxc3872331.pdf}
 }
 
+@Article{Dobri,
+  Title                    = {Dobrindt entwickelt Regeln für Roboterautos},
+  Author                   = {{Die Zeit}},
+
+  Owner                    = {andre},
+  Timestamp                = {2015.04.01},
+  Url                      = {http://www.zeit.de/mobilitaet/2015-02/alexander-dobrindt-selbstfahrende-autos-strassenverkehr}
+}
+
+@Article{Prom,
+  Title                    = {Das intelligent geführte Auto},
+  Author                   = {{H. Weise}},
+  Journal                  = {Die Zeit},
+
+  Owner                    = {andre},
+  Timestamp                = {2015.04.01},
+  Url                      = {http://www.zeit.de/1992/35/das-intelligent-gefuehrte-auto}
+}
+
+@Article{Neva,
+  Title                    = {With Driverless Cars, Once Again It Is California Leading The Way},
+  Author                   = {{J. Muller}},
+  Journal                  = {Forbes Magazin},
+
+  Owner                    = {andre},
+  Timestamp                = {2015.04.01},
+  Url                      = {http://www.forbes.com/sites/joannmuller/2012/09/26/with-driverless-cars-once-again-it-is-california-leading-the-way/}
+}
+
 @Standard{Calib,
   Title                    = {Camera Calibration Toolbox for Matlab},
   Organization             = {Intel Corporation},
   Author                   = {{J.-Y. Bouguet}},
-  Month                    = {Oktober},
   Url                      = {http://www.vision.caltech.edu/bouguetj/calib_doc/index.html},
-  Year                     = {2004},
 
   Owner                    = {andre},
   Timestamp                = {2015.03.02}
 }
 
+@Electronic{DemMan,
+  Title                    = {Demolition Man},
+  Author                   = {{M. Brambilla (Regie)}},
+  HowPublished             = {Film (1993)},
+  Url                      = {http://www.imdb.com/title/tt0106697/},
+
+  Owner                    = {andre},
+  Timestamp                = {2015.04.01}
+}
+
 @Article{Peter,
   Title                    = {MATLAB and Octave Functions for Computer Vision and Image Processing},
   Author                   = {{P. Kovesi}},
-  Year                     = {2005},
-
-  Month                    = {Februar},
 
   Owner                    = {andre},
   Timestamp                = {2015.03.03},
@@ -45,8 +105,6 @@
   Title                    = {Spatial transformations: Defining and applying custom transforms},
   Author                   = {{S. Eddins}},
   Institution              = {MathWorks},
-  Year                     = {2006},
-  Month                    = {August},
 
   Owner                    = {andre},
   Timestamp                = {2015.03.03},
@@ -55,11 +113,8 @@
 
 @Article{Galway,
   Title                    = {Distance Determination for an Automobile Environment using Inverse Perspective Mapping in OpenCV},
-  Author                   = {{S. Tuohy and D.O’Cualain and E. Jones and M.Glavin}},
+  Author                   = {{S. Tuohy} and {D.O’Cualain} and {E. Jones} and {M.Glavin}},
   Journal                  = {ISSC},
-  Year                     = {2010},
-
-  Month                    = {June},
 
   Owner                    = {andre},
   Timestamp                = {2015.03.03},
@@ -68,21 +123,24 @@
 
 @Article{TimMar,
   Title                    = {Entwicklung einer Karosserie für das oTToCar},
-  Author                   = {{T. Rose and M. Treseler}},
-  Year                     = {2014},
-
-  Month                    = {November},
+  Author                   = {{T. Rose} and {M. Treseler}},
 
   Owner                    = {andre},
   Timestamp                = {2015.02.26}
 }
 
+@Electronic{TT01,
+  Title                    = {Tamiya TT-01 Type-E (TT-01E) Chassis},
+  Author                   = {{Tamiya Inc.}},
+  Url                      = {http://www.rcscrapyard.net/de/tamiya-tt-01-type-e.htm},
+
+  Owner                    = {andre},
+  Timestamp                = {2015.02.25}
+}
+
 @Article{VikAnd,
   Title                    = {oTToCAR, Interdisziplinäres Teamprojekt},
-  Author                   = {{V. Wiedmeier and A. Himmel}},
-  Year                     = {2013},
-
-  Month                    = {November},
+  Author                   = {{V. Wiedmeier} and {A. Himmel}},
 
   Owner                    = {andre},
   Timestamp                = {2015.02.19}
@@ -90,42 +148,17 @@
 
 @TechReport{Zhang,
   Title                    = {A Flexible New Technique for Camera Calibration},
-  Author                   = {{Zhengyou Zhang}},
+  Author                   = {{Z. Zhang}},
   Institution              = {Microsoft Research, Microsoft Corporation},
-  Year                     = {1998},
-  Month                    = {Dezember},
 
   Owner                    = {andre},
   Timestamp                = {2015.03.03},
   Url                      = {http://research.microsoft.com/en-us/um/people/zhang/Papers/TR98-71.pdf}
 }
 
-@Electronic{TT01,
-  Title                    = {Tamiya TT-01 Type-E (TT-01E) Chassis},
-  Month                    = {Februar},
-  Url                      = {http://www.rcscrapyard.net/de/tamiya-tt-01-type-e.htm},
-  Year                     = {2015},
-
-  Owner                    = {andre},
-  Timestamp                = {2015.02.25}
-}
-
-@Booklet{RegelW,
-  Title                    = {Carolo-Cup Regelwerk 2015},
-  Month                    = {Juni},
-  Note                     = {Homepage Carolo-Cup: www.carolo-cup.de},
-  Year                     = {2014},
-
-  Owner                    = {andre},
-  Timestamp                = {2015.02.20},
-  Url                      = {https://wiki.ifr.ing.tu-bs.de/carolocup/system/files/Hauptwettbewerb2015.pdf}
-}
-
 @Electronic{Wim,
   Title                    = {Winkelmesser},
-  Month                    = {Juni},
   Url                      = {http://commons.wikimedia.org/wiki/File:Protractor_Rapporteur_Degree_V1.jpg},
-  Year                     = {2010},
 
   Owner                    = {andre},
   Timestamp                = {2015.02.25}
