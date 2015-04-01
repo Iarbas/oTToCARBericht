@@ -1,4 +1,5 @@
-\section{Modellprädiktive Regelung}
+\section{Fahrspurregelung mittels modellprädiktiver Regelung}
+In allen dynamischen Disziplienen des Carolocups besteht die wichtige Teilaufgabe möglichst fehlerfrei einer aufgeklebten Fahrspur zu folgen. Um diese Aufgabe zu erfüllen, wurde ein modellprädiktiver Regelansatz gewählt.\\ \\ 
 Bei der modellprädiktiven Regelung (MPC) handelt es sich um eine Form der optimalen Regelung, bei der wiederholt eine Berechnung der optimalen Steuerung für ein System ausgehend von dessen aktuellem Zustand stattfindet. In vielen Bereichen finden MPCs immer häufiger Anwendung, da sie eine direkte Berücksichtigung von Beschränkungen erlauben und eine Form des strukturierten Reglerentwurfs ausgehend von der modellierten Systemdynamik darstellen. Dabei kann durch die geeignete Wahl der Kostenfunktion und deren Wichtungsparametern die Güte der des Reglers geziehlt beeinflusst werden. Allerdings ergeben sich auch Schwierigkeiten bei der Verwendung von MPCs. Zum einen ist die Konvergenz der Optimierung gegen einen optimalen Wert für die Optimierungsvariablen und die Stabiltät des geschlossenen Kreises insbesondere bei nichtlinearen Systemmodellen oft nur schwierig nachweisbar und zum anderen stellt das wiederholte Lösen des meist hochdimensionalen Optimierungsproblems während der Laufzeit in genügend schneller Geschwindigkeit eine große Herausforderung dar.
 \\
 \subsection{Problemformulierung für die modellprädiktive Regelung}
@@ -13,7 +14,7 @@ mit den nichtlinearen Funktionen $\boldsymbol{f}\left ( \cdot \right )$ und $\bo
   &\boldsymbol{u}(k) \in \mathcal{U}\subset\mathbb{R}^m\\
   &\boldsymbol{y}(k) \in \mathcal{Y}\subset\mathbb{R}^r
 \end{align*}
-Ausgehend vom aktuellen Zustand $x(k)$ des zu regelnden Systems, der wenn nicht messbar geschätzt werden muss, wird anhand des Systemmodells das zukünftige Systemverhalten
+Ausgehend vom aktuellen Zustand $\boldsymbol{x}(k)$ des zu regelnden Systems, der wenn nicht messbar geschätzt werden muss, wird anhand des Systemmodells das zukünftige Systemverhalten
 \begin{align*}
   \boldsymbol{x_p}=\left\{ \boldsymbol{x}(k+1),\dots,\boldsymbol{x}(k+n_p)\right\}
 \end{align*}
@@ -21,10 +22,12 @@ bis zum Prädiktionshorizont $n_p$ unter der Optimierung einer Sequenz von Eing�
 \begin{align*}
   \boldsymbol{u}=\left\{ \boldsymbol{u}(k),\dots,\boldsymbol{u}(k+n_c-1)\right\}
 \end{align*}
-bis zum Stellhorizont $n_c$ vorhergesagt. Aus der gefundenen optimalen Eingangssequenz $u^*$ wird der erste Eintrag $u^*(k)$ auf das zu regelnde System angewandt. Im nächsten Zeitschritt kann der neue Zustand gemessen bzw. geschätzt werden und die Optimierung beginnt von neuem. Ziel dabei ist es einer Referenztrajektorie $x_r$ zu folgen.\\ \\
-Für das an jedem Zeitschritt $k$ zu lösende Minimierungsproblem wurde die benötigte Kostenfunktion $J$ in quadratische Form mit $x_p$ und $u$ als Optimierungsvariablen aufgestellt:
+bis zum Stellhorizont $n_c$ vorhergesagt. Aus der gefundenen optimalen Eingangssequenz $\boldsymbol{u}^*$ wird der erste Eintrag $\boldsymbol{u}^*(k)$ auf das zu regelnde System angewandt. Im nächsten Zeitschritt kann der neue Zustand gemessen bzw. geschätzt werden und die Optimierung beginnt von neuem. Ziel dabei ist es einer Referenztrajektorie $\boldsymbol{x_r}$ zu folgen.\\ \\
+Für das an jedem Zeitschritt $k$ zu lösende Minimierungsproblem wurde die benötigte Kostenfunktion $J$ in quadratische Form mit $\boldsymbol{x_p}$ und $\boldsymbol{u}$ als Optimierungsvariablen aufgestellt:
 \begin{align*}
-	\underset{\boldsymbol{x_p, u}}{\text{min}}\;J:=\sum_{i=k+1}^{k+n_p} \left [\boldsymbol{x}_{p}(i)-\boldsymbol{x}_{r}(i)\right ]^T\boldsymbol{Q}_i\left [\boldsymbol{x}_{p}(i)-\boldsymbol{x}_{r}(i)\right ] +\sum_{j=k}^{k+n_c-1} \boldsymbol{u}^T(i)\boldsymbol{R}_j\boldsymbol{u}\\
+	\underset{\boldsymbol{x_p, u}}{\text{min}}\;&J:=\sum_{i=k+1}^{k+n_p} \left [\boldsymbol{x}_{p}(i)-\boldsymbol{x}_{r}(i)\right ]^T\boldsymbol{Q}_i\left [\boldsymbol{x}_{p}(i)-\boldsymbol{x}_{r}(i)\right ] +\sum_{j=k}^{k+n_c-1} \boldsymbol{u}^T(j)\boldsymbol{R}_j\boldsymbol{u}(j)\\
+	s.t.\;&\boldsymbol{x_p}(i+1)=\boldsymbol{f}\left ( \boldsymbol{x_p}(i), \boldsymbol{u}(i) \right ),\quad i=k,...,k+n_c-1\\
+	&\boldsymbol{x_p}(i+1)=\boldsymbol{f}\left ( \boldsymbol{x_p}(i), \boldsymbol{u}(k+n_c-1) \right ),\quad i=k+n_c,...,k+n_p-1
 \end{align*}
 Mit den Vektoren
 \begin{align*}
@@ -32,10 +35,10 @@ Mit den Vektoren
 	\boldsymbol{x}_r(k)&=\left [ \boldsymbol{x}_r(k+1),\dots,\boldsymbol{x}_r(k+n_p) \right ]^T\\
 	\boldsymbol{u}(k)&=\left [ \boldsymbol{u}(k),\dots,\boldsymbol{u}(k+n_c-1) \right ]^T
 \end{align*}
-und dazugehörigen Wichtungsmatrizen $\boldsymbol{Q}_i\quad(i=1, ...,n_p)$ und $\boldsymbol{R}_j\quad(j=0, ...,n_c-1)$, die folgende Vorausetzungen erfüllen müssen.\\
+und dazugehörigen Wichtungsmatrizen $\boldsymbol{Q}_i\;(i=1, ...,n_p)$ und $\boldsymbol{R}_j\;(j=0, ...,n_c-1)$, die folgende Vorausetzungen erfüllen müssen.\\
 Linear MPC/Nonlinear MPC\\
 Beschränkungen
-\subsection{Konkrete Umsetzung der modellprädiktiven Regelung am oTToCAR}
+\subsection{Konkrete Implementierung der Fahrspurregelung am oTToCAR}
 u setzt sich zusammen aus Stellgröße Servo für den Lenkeinschlag und Stellgröße für den Motor für die Beschleunigung. Dabei wird n Schritte in die Zukunft geschaut, woraus ein Optimierungsvektor der Dimension R=irgendwas resultiert. Je größer man n wählt, desto besser lässt sich z.B. die Geschwindigkeit in Abhängigkeit zur Entfernung und Krümmung einer bevorstehenden Kurve ">anpassen"< oder Schwierigkeiten beim Durchfahren einer S-Kurve überwinden. Allerdings nimmt dadurch auch die Komplexität der Optimierung zu und man stößt schnell an die Grenzen der verfügbaren Rechenzeit/Recourcen.\\ \\
 Verarbeitung der Polylinien\\
 Interpolation\\
