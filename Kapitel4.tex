@@ -1,5 +1,5 @@
 \section{Modellprädiktive Regelung}
-Modellprädiktive Regelung ist quasi eine iterative Berechnung einer optimalen Steuerung mit der Rückführung der Zustände zum jeweiligen Zeitpunkt. Sie findet in vielen Bereichen immer häufiger Anwendung, da sie eine direkte Berücksichtigung von Beschränkungen ermöglicht und einen strukturierten Reglerentwurf darstellt (Modellierung -> Optimierung, Angabe einer geeigneten Kostenfunktion) Allerdings ergeben sich auch Schwierigkeiten bei der Verwendung von modellprädiktiven Regelungen. Zum einen ist die Konvergenz der Optimierung gegen einen optimalen Wert für die Eingangsgröße und die Stabiltät des geschlossenen Kreises oft nur schwierig nachweisbar und zum anderen stellt das schnelle Online-Lösen des oft hochdimensionalen Optimierungsproblems eine Herausforderung dar.
+Bei der modellprädiktiven Regelung (MPC) handelt es sich um eine Form der optimalen Regelung, bei der wiederholt eine Berechnung der optimalen Steuerung für ein System ausgehend von dessen aktuellem Zustand stattfindet. In vielen Bereichen finden MPCs immer häufiger Anwendung, da sie eine direkte Berücksichtigung von Beschränkungen erlauben und eine Form des strukturierten Reglerentwurfs ausgehend von der modellierten Systemdynamik darstellen. Dabei kann durch die geeignete Wahl der Kostenfunktion und deren Wichtungsparametern die Güte der des Reglers geziehlt beeinflusst werden. Allerdings ergeben sich auch Schwierigkeiten bei der Verwendung von MPCs. Zum einen ist die Konvergenz der Optimierung gegen einen optimalen Wert für die Optimierungsvariablen und die Stabiltät des geschlossenen Kreises insbesondere bei nichtlinearen Systemmodellen oft nur schwierig nachweisbar und zum anderen stellt das wiederholte Lösen des meist hochdimensionalen Optimierungsproblems während der Laufzeit in genügend schneller Geschwindigkeit eine große Herausforderung dar.
 \\
 \subsection{Grundlagen der modellprädiktiven Regelung}
 Im realen Anwenungsfall des oTToCAR-Projekts eignet sich eine Systemdarstellung in zeitdiskreter Form mehr als in kontinuierlicher Form, bei der die Optimierung außerdem meist komplexer ist. Demnach liegen die Systemgleichung in folgender Form vor:
@@ -52,6 +52,7 @@ Hinzufügen von Beschränkungen
 Scheitelpunkt -> Newtonschritt der quadratischen Kostenfunktion
 Aufwand\\
 Nochmal überlegen\\
+Ergebniss visualisieren: Plot der Punkte der Polylinie mit eingetragener Prädiktion des optimalen Lenkeinschlags\\
 In der Vorbereitung auf den Wettkampf hat sich herausgestellt, dass die kurzen Testzeiten auf der Originalstrecke gut ausgenutzt werden muss. Dazu musste vorher extrahiert werden, welche Parameter entscheidenen Einfluss auf die Güte haben. Diese konnten dann online während der Fahrt mit dem dynamic reconfigure Paket getuned werden. (welche Parameter)\\
 keine neue Polylinie\\
 \subsection{Zukünftige Schritte}
