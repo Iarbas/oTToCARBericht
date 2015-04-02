@@ -36,8 +36,16 @@ Mit den Vektoren
 	\boldsymbol{u}(k)&=\left [ \boldsymbol{u}(k),\dots,\boldsymbol{u}(k+n_c-1) \right ]^T
 \end{align*}
 und dazugehörigen Wichtungsmatrizen $\boldsymbol{Q}_i\;(i=1, ...,n_p)$ und $\boldsymbol{R}_j\;(j=0, ...,n_c-1)$, die folgende Vorausetzungen erfüllen müssen.\\
-Linear MPC/Nonlinear MPC\\
-Beschränkungen
+Weiterhin lässt sich das Optimierungsproblem um einfache Beschränkungen der Eingänge
+\begin{align*}
+  \boldsymbol{u}_{min} \leq \boldsymbol{u}(i) \leq \boldsymbol{u}_{max}
+\end{align*}
+und Zustandsbeschränkungen der Form
+\begin{align*}
+  \boldsymbol{A}\boldsymbol{x}_p(i) \leq \boldsymbol{b}
+\end{align*}
+erweitern.
+
 \subsection{Konkrete Implementierung der Fahrspurregelung für das oTToCAR}
 Die konkrete Implementierung der Fahrspurregelung auf der Recheneinheit des oTToCARs macht weitere Vorabeit, wie das erstellen der Referenztrajektorie und Anpassungen des allgemeinen Anstatzes für die MPC wie gewisse Vereinfachungen, um die Regelung mit einer Rate von 50Hz betreiben zu können, nötig.
 \subsubsection{Dimension der Optimierungsvariable}
