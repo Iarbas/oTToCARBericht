@@ -1,9 +1,9 @@
 \section{Fahrspurregelung mittels modellprädiktiver Regelung}
-In allen dynamischen Disziplienen des Carolocups besteht die wichtige Teilaufgabe möglichst fehlerfrei einer aufgeklebten Fahrspur zu folgen. Um diese Aufgabe zu erfüllen, wurde ein modellprädiktiver Regelansatz gewählt.\\ \\ 
-Bei der modellprädiktiven Regelung (MPC) handelt es sich um eine Form der optimalen Regelung, bei der wiederholt eine Berechnung der optimalen Steuerung für ein System ausgehend von dessen aktuellem Zustand stattfindet. In vielen Bereichen finden MPCs immer häufiger Anwendung, da sie eine direkte Berücksichtigung von Beschränkungen erlauben und eine Form des strukturierten Reglerentwurfs ausgehend von der modellierten Systemdynamik darstellen. Dabei kann durch die geeignete Wahl der Kostenfunktion und deren Wichtungsparametern die Güte der des Reglers geziehlt beeinflusst werden. Allerdings ergeben sich auch Schwierigkeiten bei der Verwendung von MPCs. Zum einen ist die Konvergenz der Optimierung gegen einen optimalen Wert für die Optimierungsvariablen und die Stabiltät des geschlossenen Kreises insbesondere bei nichtlinearen Systemmodellen oft nur schwierig nachweisbar und zum anderen stellt das wiederholte Lösen des meist hochdimensionalen Optimierungsproblems während der Laufzeit in genügend schneller Geschwindigkeit eine große Herausforderung dar.
+In allen dynamischen Disziplienen des Carolo-Cups besteht die wichtige Teilaufgabe möglichst fehlerfrei einer in weiß auf schwarz aufgeklebten Fahrbahn zu folgen. Um diese Aufgabe zu erfüllen, wurde ein modellprädiktiver Regelansatz gewählt.\\ \\ 
+Bei der modellprädiktiven Regelung (MPC) handelt es sich um eine Form der optimalen Regelung, bei der wiederholt eine Berechnung der optimalen Steuerung für ein System ausgehend von dessen aktuellem Zustand stattfindet. In vielen Bereichen finden MPCs immer häufiger Anwendung, da sie eine direkte Berücksichtigung von Beschränkungen erlauben und eine Form des strukturierten Reglerentwurfs ausgehend von der modellierten Systemdynamik darstellen. Dabei kann durch die geeignete Wahl der Kostenfunktion und deren Wichtungsparametern die Güte des Reglers geziehlt beeinflusst werden. Allerdings ergeben sich auch Schwierigkeiten bei der Verwendung von MPCs. Zum einen ist die Konvergenz der Optimierung gegen einen optimalen Wert für die Optimierungsvariablen und die Stabilität des geschlossenen Kreises insbesondere bei nichtlinearen Systemmodellen oft nur schwierig nachweisbar und zum anderen stellt das wiederholte Lösen des meist hochdimensionalen Optimierungsproblems während der Laufzeit in genügend schneller Geschwindigkeit eine große Herausforderung dar.
 \\
 \subsection{Problemformulierung für die modellprädiktive Regelung}
-Im realen Anwenungsfall des oTToCAR-Projekts eignet sich eine Systemdarstellung in zeitdiskreter Form, bei der die Lösung des Optimierungsproblems weniger komplex ist und die ebenfalls zeitdiskreten Messwerte vom realen System weniger kompliziert integriert werden können. Demnach sind die diskretisierten Systemgleichungen wiefolgt gegeben:
+Im realen Anwendungsfall des oTToCAR-Projekts eignet sich eine Systemdarstellung in zeitdiskreter Form (\cite{ADA09}), bei der die Lösung des Optimierungsproblems weniger komplex ist und die ebenfalls zeitdiskreten Messwerte vom realen System weniger kompliziert integriert werden können. Demnach sind die diskretisierten Systemgleichungen wie folgt gegeben:
 \begin{align*}
   \boldsymbol{x}(k+1)&=\boldsymbol{f}\left ( \boldsymbol{x}(k), \boldsymbol{u}(k) \right )\\
   \boldsymbol{y}(k)&=\boldsymbol{g}\left ( \boldsymbol{x}(k) \right )\\
@@ -35,24 +35,24 @@ Mit den Vektoren
 	\boldsymbol{x}_r(k)&=\left [ \boldsymbol{x}_r(k+1),\dots,\boldsymbol{x}_r(k+n_p) \right ]^T\\
 	\boldsymbol{u}(k)&=\left [ \boldsymbol{u}(k),\dots,\boldsymbol{u}(k+n_c-1) \right ]^T
 \end{align*}
-und dazugehörigen Wichtungsmatrizen $\boldsymbol{Q}_i\;(i=1, ...,n_p)$ und $\boldsymbol{R}_j\;(j=0, ...,n_c-1)$, die folgende Vorausetzungen erfüllen müssen.\\
+und den dazugehörigen positiv definiten Wichtungsmatrizen $\boldsymbol{Q}_i\in\mathbb{R}^{n\times n}\;(i=1, ...,n_p)$ und $\boldsymbol{R}_j\in\mathbb{R}^{m\times m}\;(j=0, ...,n_c-1)$.\\
 Weiterhin lässt sich das Optimierungsproblem um einfache Beschränkungen der Eingänge
 \begin{align*}
-  \boldsymbol{u}_{min} \leq \boldsymbol{u}(i) \leq \boldsymbol{u}_{max}
+  \boldsymbol{u}_{min} \leq \boldsymbol{u}(i) \leq \boldsymbol{u}_{max},\quad i=k,...,k+n_c-1
 \end{align*}
 und Zustandsbeschränkungen der Form
 \begin{align*}
-  \boldsymbol{A}\boldsymbol{x}_p(i) \leq \boldsymbol{b}
+  \boldsymbol{A}\boldsymbol{x}_p(i) \leq \boldsymbol{b}\quad i=k,...,k+n_p-1
 \end{align*}
 erweitern.
 
 \subsection{Konkrete Implementierung der Fahrspurregelung für das oTToCAR}
-Die konkrete Implementierung der Fahrspurregelung auf der Recheneinheit des oTToCARs macht weitere Vorabeit, wie das erstellen der Referenztrajektorie und Anpassungen des allgemeinen Anstatzes für die MPC wie gewisse Vereinfachungen, um die Regelung mit einer Rate von 50Hz betreiben zu können, nötig.
+Die konkrete Implementierung der Fahrspurregelung auf der Recheneinheit des oTToCARs macht weitere Vorarbeit, wie das erstellen der Referenztrajektorie und Anpassungen des allgemeinen Ansatzes für die MPC wie gewisse Vereinfachungen, um die Regelung mit einer Rate von 50Hz betreiben zu können, nötig.
 \subsubsection{Dimension der Optimierungsvariable}
-Als Systemeingänge für das Fahrzeugmodell sind eine abstrakte Entsprechung des Motordrehmoments $u_1=...$ und der Lenkeinschlag der Räder $u_2=...$ vorhanden, demnach ergibt sich der Stellgrößenvektor zum Zeitpunkt $k$ zu $\boldsymbol{u}(k)=[u_1(k), u_2(k)]^T$. Da sich die prädizierten Zustände $\boldsymbol{x}_p$ aus den Gleichungsnebenbedingungen berechnen lassen, ergibt sich die Diemension der Optimierungsvariable also zu $2\cdot n_c$.
+Als Systemeingänge für das Fahrzeugmodell sind eine abstrakte Entsprechung des Motordrehmoments $u_1=...$ und der Lenkeinschlag der Räder $u_2=...$ vorhanden, demnach ergibt sich der Stellgrößenvektor zum Zeitpunkt $k$ zu $\boldsymbol{u}(k)=[u_1(k), u_2(k)]^T$. Da sich die prädizierten Zustände $\boldsymbol{x}_p$ aus den Gleichungsnebenbedingungen berechnen lassen, ergibt sich die Dimension der Optimierungsvariable also zu $2\cdot n_c$.
 Je größer man $n_c$ wählt, desto besser lässt sich z.B. die Geschwindigkeit in Abhängigkeit zur Entfernung und Krümmung einer bevorstehenden Kurve begrenzen oder Schwierigkeiten beim Durchfahren von S-Kurven bewältigen. Allerdings nimmt dadurch auch die Dimension der Optimierungsvariable zu, was dazu führt, dass die Grenzen der verfügbaren Rechenzeit zum Lösen des Optimierungsproblems während der Laufzeit schnell erreicht werden.
 \subsubsection{Referenztrajektorie}
-Mit einer auf dem Fahrzeug befestigten Kamera lässt sich die zu verfolgende Fahrbahn wahrnehmen. Diese Wahrnehmung liefert mit einer Rate von bis zu 50Hz eine Polylinie der erkannten Fahrbahnmarkierung projeziert auf die rechte Fahrspur. Diese Polyline kann je nach erkannter Fahrbahn aus einer unterschiedlich Anzahl von Punkten mit variablem Abstand zu einander bestehen.\\ \\
+Mit einer auf dem Fahrzeug befestigten Kamera lässt sich die zu verfolgende Fahrbahn wahrnehmen. Diese Wahrnehmung liefert mit einer Rate von bis zu 50Hz eine Polylinie der erkannten Fahrbahnmarkierung projiziert auf die rechte Fahrspur. Diese Polyline kann je nach erkannter Fahrbahn aus einer unterschiedlich Anzahl von Punkten mit variablem Abstand zu einander bestehen.\\ \\
 Um diese Polylinien als Referenztrajektorie für die MPC nutzen zu können, werden zu kurze Polylinien zunächst soweit extrapoliert, dass ein Vergleich zwischen Prädiktion zum Zeitschritt $k+np$ und Referenz in jedem Fall möglich ist. Anschließend werden die Koordinaten der Punkte auf der Polylinie als Funkion in Abhängigkeit der summierten Wegstrecke zwischen den Punkten vom Auto ausgehend hinterlegt, um diese dann als Referenztrajektorie zu jeder beliebigen Wegstrecke s = v*t*i interpolieren zu können. In Abb. \ref{fig:referenz} ist ein Beispiel einer Referenztrajektorie dargestellt.
 \begin{figure}[t]
 \centering
