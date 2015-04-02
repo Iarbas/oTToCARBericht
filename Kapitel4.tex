@@ -35,8 +35,7 @@ Mit den Vektoren
 	\boldsymbol{x}_r(k)&=\left [ \boldsymbol{x}_r(k+1),\dots,\boldsymbol{x}_r(k+n_p) \right ]^T\\
 	\boldsymbol{u}(k)&=\left [ \boldsymbol{u}(k),\dots,\boldsymbol{u}(k+n_c-1) \right ]^T
 \end{align*}
-und den dazugehörigen positiv definiten Wichtungsmatrizen $\boldsymbol{Q}_i\in\mathbb{R}^{n\times n}\;(i=1, ...,n_p)$ und $\boldsymbol{R}_j\in\mathbb{R}^{m\times m}\;(j=0, ...,n_c-1)$.\\
-Weiterhin lässt sich das Optimierungsproblem um einfache Beschränkungen der Eingänge
+und den dazugehörigen positiv definiten Wichtungsmatrizen $\boldsymbol{Q}_i\in\mathbb{R}^{n\times n}\;(i=1, ...,n_p)$ und $\boldsymbol{R}_j\in\mathbb{R}^{m\times m}\;(j=0, ...,n_c-1)$. Weiterhin lässt sich das Optimierungsproblem um einfache Beschränkungen der Eingänge
 \begin{align*}
   \boldsymbol{u}_{min} \leq \boldsymbol{u}(i) \leq \boldsymbol{u}_{max},\quad i=k,...,k+n_c-1
 \end{align*}
@@ -53,16 +52,15 @@ Als Systemeingänge für das Fahrzeugmodell sind der Lenkeinschlag der Räder $u
 Je größer man $n_c$ wählt, desto besser lässt sich z.B. die Geschwindigkeit in Abhängigkeit zur Entfernung und Krümmung einer bevorstehenden Kurve begrenzen oder Schwierigkeiten beim Durchfahren von S-Kurven bewältigen. Allerdings nimmt dadurch auch die Dimension der Optimierungsvariable zu, was dazu führt, dass die Grenzen der verfügbaren Rechenzeit zum Lösen des Optimierungsproblems während der Laufzeit schnell erreicht werden.
 \subsubsection{Referenztrajektorie}
 Mit einer auf dem Fahrzeug befestigten Kamera lässt sich die zu verfolgende Fahrbahn wahrnehmen. Diese Wahrnehmung liefert mit einer Rate von bis zu 50Hz eine Polylinie der erkannten Fahrbahnmarkierung projiziert auf die rechte Fahrspur. Diese Polyline kann je nach erkannter Fahrbahn aus einer unterschiedlich Anzahl von Punkten mit variablem Abstand zu einander bestehen.\\ \\
-Um diese Polylinien als Referenztrajektorie für die MPC nutzen zu können, werden zu kurze Polylinien zunächst soweit extrapoliert, dass ein Vergleich zwischen Prädiktion zum Zeitschritt $k+np$ und Referenz in jedem Fall möglich ist. Anschließend werden die Koordinaten der Punkte auf der Polylinie als Funkion in Abhängigkeit der summierten Wegstrecke zwischen den Punkten (vom Auto ausgehend) hinterlegt, um diese als Referenztrajektorie zu den dazugehörigen Werten aus der Prädiktion mit der zurückgelegten Wegstrecke $s = v*\Delta t*i$ interpolieren zu können. In Abb. \ref{fig:referenz} ist ein Beispiel einer Referenztrajektorie dargestellt.
+Um diese Polylinien als Referenztrajektorie für die MPC nutzen zu können, werden zu kurze Polylinien zunächst soweit extrapoliert, dass ein Vergleich zwischen Prädiktion zum Zeitschritt $k+np$ und Referenz in jedem Fall möglich ist. Anschließend werden die Koordinaten der Punkte auf der Polylinie als Funkion in Abhängigkeit der summierten Wegstrecke zwischen den Punkten (vom Auto ausgehend) hinterlegt, um diese als Referenztrajektorie zu den dazugehörigen Werten aus der Prädiktion mit der zurückgelegten Wegstrecke $s_i = iv\Delta t$ interpolieren zu können. Dabei ist $v$ die Geschwindigkeit der Fahrzeuges. In Abb. \ref{fig:referenz} ist ein Beispiel einer Referenztrajektorie dargestellt.
 \begin{figure}[t]
 \centering
 \includegraphics[scale=0.53]{Bilder/Reference.png}
 \caption{Veranschaulichung der Referenztrajektorie und des prädizierten Verhaltens aufgetragen im Weltkoordinatensystem $x_1$ über $x_2$ in Meter}
 \label{fig:referenz}
-\end{figure}\\ \\
-Kostenfunktion angepasst $x_p(i)-x_r((i-k)\Delta t)$\\
-Das Modell liefert als $x_1$ und $x_2$ die Position des Autos auf einer globalen Karte und den Gierwinkel dazu. Da bisher noch keine globale Karte implementiert ist, wird jedes Mal, wenn eine neue Polylinie vorhanden ist die Pseudo-Weltkarte auf das Vehicle Reference Frame zurück gesetzt (Fahrzeugposition und Gierwinkel auf 0 setzen.) Es ist dann kurzeitig möglich, wenn keine neue Polylinie vorhanden ist, weiter an der letzten Referenztrajektorie weiter zu fahren, in dem man x(k) mit Hife des Modells schätzt.\\ \\
-Referenz visualisieren: Plot der Punkte der Polylinie mit eingetragener Prädiktion des optimalen Lenkeinschlags
+\end{figure}
+Die Terme $\left [\boldsymbol{x}_{p}(i)-\boldsymbol{x}_{r}(i)\right ]$ in der Kostenfunktion werden demnach durch $\left [\boldsymbol{x}_{p}(i)-\boldsymbol{x}_{r}(s_i)\right ]$ ersetzt.\\ \\
+Das Modell liefert als $x_1$ und $x_2$ die globale Position des Autos und den dazugehörigen Gierwinkel $x_3=\psi$. Da bisher noch keine globale Karte implementiert ist, wird jedes Mal, wenn eine neue Polylinie übermittelt wird die jeweils lokal gültige Weltkarte auf das Fahrzeugkoordinatensystem zurück gesetzt (Fahrzeugposition und Gierwinkel werden auf 0 zurück setzen.) Es ist kurzzeitig möglich, bei Ausbleiben einer verlässlichen neuen Polylinie, weiter an der letzten Referenztrajektorie weiter zu fahren, in dem man den Zustand bezogen auf das letzte lokal gültige Weltkoordinatensystem mit Hilfe des Modells schätzt. Dies ist allerdings nur für sehr kurze Zeiten (einzelne ausbleibende Polylinien) verlässlich.
 \subsubsection{Vereinfachungen}
 Aufgrund zwischenzeitlich erschöpften Rechenkapazitäten auf dem Fahrzeug während der Entwicklungsphase wurde der modellprädiktive Ansatz zunächst auf die einfachste denkbare Implementierung [[[zusammengestrichen]]]. Dabei wurde darauf verzichtet die Motorsteuergröße mit zu optimieren und der Stellhorizont für den Lankeinschlag ist auf $n_c=1$ begrenzt. Aufgrund trotzdem zufriedenstellender Ergebnisse wurde an dieser Vereinfachung auch im Carolocup festgehalten.\\ \\
 Die Scheitelpunkt der approximierten Variablen zu berechnen. genau genug.\\
