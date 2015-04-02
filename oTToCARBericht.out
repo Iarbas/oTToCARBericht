@@ -6,7 +6,7 @@
 \BOOKMARK [2][-]{subsection.2.4}{Ergebnisse}{section.2}% 6
 \BOOKMARK [1][-]{section.3}{Fahrspurregelung mittels modellpr\344diktiver Regelung}{}% 7
 \BOOKMARK [2][-]{subsection.3.1}{Problemformulierung f\374r die modellpr\344diktive Regelung}{section.3}% 8
-\BOOKMARK [2][-]{subsection.3.2}{Konkrete Implementierung der Fahrspurregelung f\374r das oTToCAR}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.2}{Implementierung der Fahrspurregelung f\374r das oTToCAR}{section.3}% 9
 \BOOKMARK [2][-]{subsection.3.3}{Spurwechsel}{section.3}% 10
 \BOOKMARK [2][-]{subsection.3.4}{Dynamic Reconfigure}{section.3}% 11
 \BOOKMARK [2][-]{subsection.3.5}{Zuk\374nftige Schritte}{section.3}% 12
