@@ -1,5 +1,13 @@
 \BOOKMARK [1][-]{section.1}{Einleitung}{}% 1
 \BOOKMARK [1][-]{section.2}{Parametersch\344tzung}{}% 2
-\BOOKMARK [2][-]{subsection.2.1}{Messbare Parametern}{section.2}% 3
-\BOOKMARK [2][-]{subsection.2.2}{Bestimmung von Parametern mithilfe von Sch\344tzverfahren}{section.2}% 4
-\BOOKMARK [1][-]{table.caption.8}{Literaturverzeichnis}{}% 5
+\BOOKMARK [2][-]{subsection.2.1}{Direkte Messmethoden}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Indirekte Messmethoden}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Sch\344tzverfahren}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{Ergebnisse}{section.2}% 6
+\BOOKMARK [1][-]{section.3}{Fahrspurregelung mittels modellpr\344diktiver Regelung}{}% 7
+\BOOKMARK [2][-]{subsection.3.1}{Problemformulierung f\374r die modellpr\344diktive Regelung}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.2}{Konkrete Implementierung der Fahrspurregelung f\374r das oTToCAR}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.3}{Spurwechsel}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.4}{Dynamic Reconfigure}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.5}{Zuk\374nftige Schritte}{section.3}% 12
+\BOOKMARK [1][-]{subsection.3.5}{Literaturverzeichnis}{}% 13

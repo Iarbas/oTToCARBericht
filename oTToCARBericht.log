@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.11.11)  2 APR 2015 04:05
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.11.11)  2 APR 2015 07:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1225,12 +1225,12 @@ Class scrartcl Warning: Usage of package `fancyhdr' together
 Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
 less on input line 79.
 
-) (/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks50
 \verbatim@line=\toks51
 \verbatim@in@stream=\read2
-) (./Vorspann.tex
+)) (./Vorspann.tex
 (./oTToCARBericht.aux)
 \openout1 = `oTToCARBericht.aux'.
 
@@ -1344,7 +1344,7 @@ ick labels; missing features). Consider writing \pgfplotsset{compat=1.9} into y
 our preamble.
  on input line 43.
 
-<Bilder/STAC.png, id=27, 125.01683pt x 68.50237pt>
+<Bilder/STAC.png, id=58, 125.01683pt x 68.50237pt>
 File: Bilder/STAC.png Graphic file (type png)
  <use Bilder/STAC.png>
 Package pdftex.def Info: Bilder/STAC.png used on input line 46.
@@ -1364,13 +1364,13 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 46.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<Bilder/Otto.png, id=29, 503.63156pt x 506.6428pt>
+<Bilder/Otto.png, id=60, 503.63156pt x 506.6428pt>
 File: Bilder/Otto.png Graphic file (type png)
  <use Bilder/Otto.png>
 Package pdftex.def Info: Bilder/Otto.png used on input line 46.
 (pdftex.def)             Requested size: 128.0374pt x 128.8018pt.
 
-<Bilder/Ottocar.png, id=30, 264.99pt x 105.996pt>
+<Bilder/Ottocar.png, id=61, 264.99pt x 105.996pt>
 File: Bilder/Ottocar.png Graphic file (type png)
  <use Bilder/Ottocar.png>
 Package pdftex.def Info: Bilder/Ottocar.png used on input line 46.
@@ -1397,10 +1397,7 @@ er/Otto.png> <./Bilder/Ottocar.png>] (./oTToCARBericht.toc)
 \openout5 = `oTToCARBericht.toc'.
 
  [2] (./Kapitel1.tex
-
-Package natbib Warning: Citation `Dobri' on page 3 undefined on input line 2.
-
-<Bilder/Carolo.png, id=64, 1027.84pt x 352.31625pt>
+<Bilder/Carolo.png, id=104, 1027.84pt x 352.31625pt>
 File: Bilder/Carolo.png Graphic file (type png)
  <use Bilder/Carolo.png>
 Package pdftex.def Info: Bilder/Carolo.png used on input line 7.
@@ -1410,11 +1407,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--9
 
  []
 
-) (./Kapitel2.tex
-Overfull \vbox (18.14148pt too high) has occurred while \output is active []
-
-
-[3 <./Bilder/Carolo.png (PNG copy)>]
+) [3 <./Bilder/Carolo.png (PNG copy)>] (./Kapitel2.tex
 LaTeX Font Info:    Try loading font information for OMS+bch on input line 4.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsbch.fd
@@ -1423,7 +1416,7 @@ File: omsbch.fd
 LaTeX Font Info:    Font shape `OMS/bch/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 4.
 
-<Bilder/u1Messung.png, id=80, 521.95pt x 414.54875pt>
+<Bilder/u1Messung.png, id=121, 521.95pt x 414.54875pt>
 File: Bilder/u1Messung.png Graphic file (type png)
 
 <use Bilder/u1Messung.png>
@@ -1434,17 +1427,8 @@ Underfull \hbox (badness 10000) in alignment at lines 29--29
 [][][] 
  []
 
-[4 <./Bilder/u1Messung.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 35--37
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 35--37
-
- []
-
-[5] <Bilder/VerzerrtesSchachbrett.png, id=114, 642.4pt x 481.8pt>
+[4 <./Bilder/u1Messung.png>] [5]
+<Bilder/VerzerrtesSchachbrett.png, id=153, 642.4pt x 481.8pt>
 File: Bilder/VerzerrtesSchachbrett.png Graphic file (type png)
 
 <use Bilder/VerzerrtesSchachbrett.png>
@@ -1452,7 +1436,7 @@ Package pdftex.def Info: Bilder/VerzerrtesSchachbrett.png used on input line 76
 .
 (pdftex.def)             Requested size: 192.72148pt x 144.5411pt.
 
-<Bilder/UnzerrtesSchachbrett.png, id=115, 642.4pt x 481.8pt>
+<Bilder/UnzerrtesSchachbrett.png, id=154, 642.4pt x 481.8pt>
 File: Bilder/UnzerrtesSchachbrett.png Graphic file (type png)
 
 <use Bilder/UnzerrtesSchachbrett.png>
@@ -1460,48 +1444,137 @@ Package pdftex.def Info: Bilder/UnzerrtesSchachbrett.png used on input line 83.
 
 (pdftex.def)             Requested size: 192.72148pt x 144.5411pt.
  [6 <./Bilder/VerzerrtesSchachbrett.png> <./Bilder/UnzerrtesSchachbrett.png>]
-<Bilder/PerspektiveCar.png, id=135, 642.4pt x 481.8pt>
+<Bilder/PerspektiveCar.png, id=174, 642.4pt x 481.8pt>
 File: Bilder/PerspektiveCar.png Graphic file (type png)
 
 <use Bilder/PerspektiveCar.png>
 Package pdftex.def Info: Bilder/PerspektiveCar.png used on input line 131.
-(pdftex.def)             Requested size: 192.72148pt x 144.5411pt.
+(pdftex.def)             Requested size: 167.02005pt x 125.26503pt.
 
-<Bilder/NonPerspektiveCar.png, id=136, 502.678pt x 484.209pt>
+<Bilder/NonPerspektiveCar.png, id=175, 502.678pt x 484.209pt>
 File: Bilder/NonPerspektiveCar.png Graphic file (type png)
 
 <use Bilder/NonPerspektiveCar.png>
 Package pdftex.def Info: Bilder/NonPerspektiveCar.png used on input line 138.
-(pdftex.def)             Requested size: 201.06763pt x 193.68016pt.
+(pdftex.def)             Requested size: 175.93993pt x 169.47568pt.
+ [7 <./Bilder/PerspektiveCar.png> <./Bilder/NonPerspektiveCar.png>] <Bilder/Wor
+kflow.png, id=192, 463.0098pt x 448.3149pt>
+File: Bilder/Workflow.png Graphic file (type png)
 
-Overfull \hbox (1.89835pt too wide) in paragraph at lines 138--139
- [][] 
+<use Bilder/Workflow.png>
+Package pdftex.def Info: Bilder/Workflow.png used on input line 154.
+(pdftex.def)             Requested size: 300.95279pt x 291.40121pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 151--157
+
  []
 
-<Bilder/NonPerspektiveCarLight.png, id=137, 502.678pt x 484.209pt>
-File: Bilder/NonPerspektiveCarLight.png Graphic file (type png)
-
-<use Bilder/NonPerspektiveCarLight.png>
-Package pdftex.def Info: Bilder/NonPerspektiveCarLight.png used on input line 1
-49.
-(pdftex.def)             Requested size: 201.06763pt x 193.68016pt.
- [7] [8 <./Bilder/PerspektiveCar.png> <./Bilder/NonPerspektiveCar.png> <./Bilde
-r/NonPerspektiveCarLight.png>]
+[8 <./Bilder/Workflow.png>]
 PGFPlots: reading {Plotdaten/GenerationLokal.dat}
 
-Overfull \hbox (16.81688pt too wide) in paragraph at lines 177--178
+Overfull \hbox (16.81688pt too wide) in paragraph at lines 178--179
  [][] 
  []
 
 
-Underfull \hbox (badness 1540) in paragraph at lines 180--182
+Underfull \hbox (badness 1540) in paragraph at lines 181--183
 \T1/bch/m/n/10 ein selbst ent-wi-ckel-ter Partikel-Schwarm-Algorithmus
  []
 
-[9]) (./oTToCARBericht.bbl
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 14.
+[9] <Bilder/Schaetzung.png, id=212, 502.678pt x 484.209pt>
+File: Bilder/Schaetzung.png Graphic file (type png)
 
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+<use Bilder/Schaetzung.png>
+Package pdftex.def Info: Bilder/Schaetzung.png used on input line 203.
+(pdftex.def)             Requested size: 251.33838pt x 242.1039pt.
+
+Overfull \hbox (0.85358pt too wide) in paragraph at lines 210--210
+[]|[]| 
+ []
+
+
+Overfull \hbox (0.85358pt too wide) in paragraph at lines 211--211
+[]|[]| 
+ []
+
+) (./Kapitel4.tex
+Underfull \hbox (badness 10000) in paragraph at lines 2--5
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2--5
+
+ []
+
+[10 <./Bilder/Schaetzung.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 24--27
+
+ []
+
+[11] <Bilder/Reference.png, id=229, 811.23074pt x 543.83176pt>
+File: Bilder/Reference.png Graphic file (type png)
+
+<use Bilder/Reference.png>
+Package pdftex.def Info: Bilder/Reference.png used on input line 59.
+(pdftex.def)             Requested size: 429.95024pt x 288.22946pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--66
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--66
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--66
+
+ []
+
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 67--73
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--73
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--73
+
+ []
+
+[13 <./Bilder/Reference.png>]
+<Bilder/Parabeln.png, id=246, 578.16pt x 404.51125pt>
+File: Bilder/Parabeln.png Graphic file (type png)
+
+<use Bilder/Parabeln.png>
+Package pdftex.def Info: Bilder/Parabeln.png used on input line 79.
+(pdftex.def)             Requested size: 433.61893pt x 303.38269pt.
+
+<Bilder/Spurwechsel.png, id=247, 284.86424pt x 159.59625pt>
+File: Bilder/Spurwechsel.png Graphic file (type png)
+
+<use Bilder/Spurwechsel.png>
+Package pdftex.def Info: Bilder/Spurwechsel.png used on input line 90.
+(pdftex.def)             Requested size: 156.67581pt x 87.7782pt.
+ [14 <./Bilder/Parabeln.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 98--99
+
+ []
+
+)
+Underfull \hbox (badness 10000) in paragraph at lines 100--11
+
+ []
+
+(./oTToCARBericht.bbl
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 14.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
 Underfull \hbox (badness 1173) in paragraph at lines 17--23
@@ -1510,72 +1583,65 @@ pcr/m/n/10 https : / / wiki . ifr . ing . tu-[]bs . de / carolocup /
  []
 
 
-Underfull \hbox (badness 2495) in paragraph at lines 38--42
+Underfull \hbox (badness 2495) in paragraph at lines 44--48
 []\T1/bch/m/sc/10 H. Wei-se\T1/bch/m/n/10 :  Das in-tel-li-gent ge-führ-te Au-t
 o.  In: |   []   |   [] []$\T1/pcr/m/n/10 http : / / www . zeit . de / 1992 / 3
 5 /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 44--48
+Underfull \hbox (badness 10000) in paragraph at lines 50--54
 []\T1/bch/m/sc/10 J. Mul-ler\T1/bch/m/n/10 :  With Dri-ver-less Cars, On-ce Aga
 in It Is Ca-li-for-nia Lea-ding The Way.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 44--48
+Underfull \hbox (badness 10000) in paragraph at lines 50--54
 \T1/bch/m/n/10 In: |   []   |   [] []$\T1/pcr/m/n/10 http : / / www . forbes . 
 com / sites / joannmuller / 2012 / 09 / 26 /
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 66--73
+[15 <./Bilder/Spurwechsel.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 72--79
 []\T1/bch/m/sc/10 S. Edd-ins\T1/bch/m/n/10 :  Spa-ti-al trans-for-ma-ti-ons: De
 -fi-ning and ap-p-ly-ing cu-stom trans-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 66--73
+Underfull \hbox (badness 10000) in paragraph at lines 72--79
 \T1/bch/m/n/10 forms / Ma-thWorks.  []$\T1/pcr/m/n/10 http : / / blogs . mathwo
 rks . com / steve / 2006 / 08 / 04 /
  []
 
-[10]
-Underfull \hbox (badness 3861) in paragraph at lines 82--86
+
+Underfull \hbox (badness 3861) in paragraph at lines 88--92
 []\T1/bch/m/sc/10 Scientif38\T1/bch/m/n/10 :  |   [].  []$\T1/pcr/m/n/10 http :
  / / commons . wikimedia . org / wiki / File : Protractor _
  []
 
 
-Underfull \hbox (badness 1389) in paragraph at lines 93--96
+Underfull \hbox (badness 1389) in paragraph at lines 99--102
 []\T1/bch/m/sc/10 Tamiya Inc.\T1/bch/m/n/10 :  |   []   |   []   |   []   |   [
 ]   |   [].  []$\T1/pcr/m/n/10 http : / / www . rcscrapyard . net / de /
  []
 
 )
-
-Package natbib Warning: There were undefined citations.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 20.
-[11]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 20.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 18.
+ [16]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 18.
  (./oTToCARBericht.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 20.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 20.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 18.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 18.
 Package rerunfilecheck Info: File `oTToCARBericht.out' has not changed.
-(rerunfilecheck)             Checksum: 31F55A1B4F1C03018BC9F1A58B8F4BCA;336.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 20.
+(rerunfilecheck)             Checksum: AD444FBB19B28B92B3DEA70AC23D545D;940.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 18.
  ) 
 Here is how much of TeX's memory you used:
- 29949 strings out of 494935
- 644299 string characters out of 6178121
- 1208645 words of memory out of 5000000
- 32489 multiletter control sequences out of 15000+600000
- 59527 words of font info for 82 fonts, out of 8000000 for 9000
+ 30036 strings out of 494935
+ 645569 string characters out of 6178121
+ 1212166 words of memory out of 5000000
+ 32538 multiletter control sequences out of 15000+600000
+ 62284 words of font info for 91 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  76i,15n,94p,2121b,1923s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exi
@@ -1591,17 +1657,21 @@ st/fonts/type1/bitstrea/charter/bchr8a.pfb></usr/share/texlive/texmf-dist/fonts
 public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf
--dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/urw/helvetic/uhvb8a.pfb>
-Output written on oTToCARBericht.pdf (11 pages, 2302667 bytes).
+cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib5.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
+/helvetic/uhvb8a.pfb>
+Output written on oTToCARBericht.pdf (16 pages, 3556900 bytes).
 PDF statistics:
- 267 PDF objects out of 1000 (max. 8388607)
- 215 compressed objects within 3 object streams
- 54 named destinations out of 1000 (max. 500000)
- 103 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 374 PDF objects out of 1000 (max. 8388607)
+ 304 compressed objects within 4 object streams
+ 76 named destinations out of 1000 (max. 500000)
+ 187 words of extra memory for PDF output out of 10000 (max. 10000000)
 

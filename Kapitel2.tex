@@ -5,8 +5,8 @@ Um die unbekannten Parameter eines Modells schätzen zu können, wird zunächst 
 	\item durch sie andere Zustände bestimmt werden können
 	\item die wichtigsten Regelgrößen auch direkt gemessen werden
 \end{itemize}
-\subsection{Messbare Parametern}
-Die direkte Bestimmung von Parametern erfolgt weitgehend durch die Messung der selbigen, oder deren Berechnung durch weiteren messbaren Größen. Im Falle der Eingangsgröße $u_{1}$, dem Einschlagswinkel der Räder, musste zum Beispiel das Ansteuerungssignal des Servomotors in einen Winkel für die Räder umgerechnet werden. Das Ansteuerungssignal ist hierbei ein 256-stufiges PWM-Signal, welches in eine Winkelangabe umgerechnet werden muss. Für die Versuchsanordnung wurde das Fahrzeug zuerst so erhöht, dass die Räder nicht mehr auf dem Boden auflagen. Diese Vorgehensweise war nötig, da bei Kontakt der Räder mit dem Boden bei einem stehenden Fahrzeug der Haftwiderstand so hoch ist, dass sich eine kleinere Winkeländerung ergeben und die Messung verfälschen würde. Denn bei schneller Fahrt verringert sich dieser Widerstand auf nahezu Null und kann somit vernachlässigt werden. Für die Messung wurde längs an das linke Vorderrad eine Verlängerung befestigt und für jede Servoeinstellung eine Winkelauslenkung gemessen und die Kalibrierung des Servomotors vorgenommen. 
+\subsection{Direkte Messmethoden}
+Die direkte Bestimmung von Parametern erfolgt weitgehend durch die Messung der selbigen, oder deren einfache Berechnung durch weitere messbare Größen. Im Falle der Eingangsgröße $u_{1}$, dem Einschlagswinkel der Räder, musste zum Beispiel das Ansteuerungssignal des Servomotors in einen Winkel für die Räder umgerechnet werden. Das Ansteuerungssignal ist hierbei ein 256-stufiges PWM-Signal, welches in eine Winkelangabe umgerechnet werden muss. Für die Versuchsanordnung wurde das Fahrzeug zuerst so erhöht, dass die Räder nicht mehr auf dem Boden auflagen. Diese Vorgehensweise war nötig, da bei Kontakt der Räder mit dem Boden bei einem stehenden Fahrzeug der Haftwiderstand so hoch ist, dass sich nur eine kleinere Winkeländerung ergeben und die Messung verfälschen würde. Denn bei schneller Fahrt verringert sich dieser Widerstand auf nahezu Null und kann somit vernachlässigt werden. Für die Messung wurde längs an das linke Vorderrad eine Verlängerung befestigt und für jede Servoeinstellung eine Winkelauslenkung gemessen und die Kalibrierung des Servomotors vorgenommen. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=5cm]{Bilder/u1Messung.png}
@@ -14,7 +14,7 @@ Die direkte Bestimmung von Parametern erfolgt weitgehend durch die Messung der s
 		{Messung der Relation PWM-Stufe des Servos zum Einschlagswinkel der Räder (aus \cite{TT01} und \cite{Wim})}
 	\label{pict:u1Mess}
 \end{figure}
-Als Ergebnis dieses Experimentes kam heraus, dass die Erhöhung um eine PWM-Stufe des Servomotors konstant eine Drehung der Räder um 0.0028 rad entspricht. In der Tabelle \ref{tab:Pardir} aufgeführten Größen wurden hingegen direkt am oTToCAR gemessen, bzw. das Trägheitsmoment aus einem CAD-Modell \cite{TimMar} berechnet. 
+Als Ergebnis dieses Experimentes kam heraus, dass die Erhöhung um eine PWM-Stufe des Servomotors konstant eine Drehung der Räder um 0.0028 rad entspricht. Andere Parameter konnten durch Recherche ermittelt werden, da sie sehr gebräuchliche Kenngrößen darstellen, wie z.B. die Dichte der Luft. Desweiteren wurde das Trägheitsmoment durch die Arbeit \cite{TimMar} mithilfe eines CAD-Modells vom Fahrzeug berechnet. In der Tabelle \ref{tab:Pardir} werden alle diese Größen diesbezüglich aufgeführt.
 \begin{table}[H]
 \centering
 \begin{tabularx}{\columnwidth}{p{8cm}|p{4cm}|p{4cm}}
@@ -29,12 +29,12 @@ Als Ergebnis dieses Experimentes kam heraus, dass die Erhöhung um eine PWM-Stuf
 \end{tabularx}
 \caption{Direkt bestimmbare Parameter \label{tab:Pardir}}
 \end{table} 
-\subsection{Bestimmung von Parametern mithilfe von Schätzverfahren}
-Die verbliebenen zu ermittelnden Parameter erfordern weit umfangreichere Messungen, wie zum Beispiel die Parameter für den Rollwiderstand und die Schräglaufübersetzung der Räder, die sich auch nicht direkt messen lassen. Für die Suche nach geeigneten Parametersätzen wird dabei ein Schätzverfahren benötigt, das anhand von anderen direkt messbaren Größen die von den gesuchten Parametern abhängig sind, die zu bestimmenden Parameter indirekt ermitteln kann. Dabei sind die wohl charackteristischsten Messgrößen des Fahrzeuges seine Position und Geschwindigkeit. Anhand der gegebenen Zustandsgleichungen und aus logischen Überlegungen erkennt man eine starke Abhängigkeit zu allen gesuchten Parametern. In diesem Abschnitt wird sich mit der Frage beschäftigt, wie die Messung dieser Zustände umzusetzen ist und wie danach aus den gewonnen Messdaten die noch fehlenden Parametern bestimmt werden.
-\subsubsection{Geschwindigkeits- und Positionsmessung}
-Die Geschwindigkeitsmessung wird hierfür intern vom Fahrzeug bereitgestellt. Sie wird dabei ähnlich wie an einem Fahrrad realisiert, indem Neodymmagnete auf alle Räder befestigt und durch Hall-Sensoren die Bewegungen der Magneten erfasst werden. Denn das Magnetfeld am Hall-Sensor ändert sich, sobald die Räder anfangen zu rotieren und die Änderung des Magnetfeldes kann schließlich direkt in eine Geschwindigkeit umgerechnet werden. Die Vorteile der Geschwindigkeitsmessung an jedem einzelnen Rad ist die höhere Auflösung, sowie eine bessere Messung der Geschwindigkeiten in Kurven. Da nämlich das Modellauto über ein Differentialgetriebe verfügt, bewegen sich die Räder in Kurvenfahrten unterschiedlich schnell, sodass die tatsächliche Geschwindigkeit des Fahrzeuges gemittelt werden muss.\\ \\
-Die Positionsbestimmung hingegen wird durch eine Kamera realisiert, die auf ein vorher definiertes Tesfeld ausgelegt werden muss. Die technischen Anforderungen an das Tracking sind dabei ein ausreichend großes Testfeld, sowie eine geeignete Kamera. Die Wahl der Kamera hängt dabei von verschiedenen Anforderungen ab, die vor einer Installation des Systems klar definiert werden müssen. In dem Fall eines sich schnell bewegenden Fahrzeuges ist die Bilderanzahl pro Sekunde einer Kamera sehr hoch zu gewichten, um Bewegungsunschärfe und fehlende Bewegungen zwischen zwei Bilder zu minimieren, welche die Messungen verfälschen können. Desweiteren spielt die Auflösung für Positionsgenauigkeit und die Schnittstellen der Kamera für hohe Datenraten und Netzwerkfähigkeit ein große Rolle. \\ \\
-Nach dem Aufbau des Parcours und der Installation des Tracking-Systems, muss die Kamera kalibriert werden. Die Kalibrierung ist notwendig, um die Symmetrien die durch den "`Fischaugeneffekt"' der Linse und der perspektivischen Verzerrung entstehen wiederherzustellen. Ein gängiges Verfahren zur Beseitigung der Linsenkrümmung und der perspektivischen Verzerrung ist die Kalibrierung mittels Schachbrettmuster. Die Beseitigung des Effektes der Linsenkrümmung wird mittels einer Vorwärtstransformation der Pixel des entkrümmten Bildes in das gekrümmte realisiert \cite{Zhang}. Der Algorithmus dahinter funktioniert folgerndermaßen:\par\medskip
+\subsection{Indirekte Messmethoden}
+Die verbliebenen zu ermittelnden Parameter erfordern weit umfangreichere Messungen, wie zum Beispiel die Parameter für den Rollwiderstand und die Schräglaufübersetzung der Räder, die sich auch nicht direkt messen lassen. Für die Suche nach geeigneten Parametersätzen wird dabei ein Schätzverfahren benötigt, das anhand von anderen direkt messbaren Größen die von den gesuchten Parametern abhängig sind, die zu bestimmenden Parameter indirekt ermitteln kann. Dabei sind die wohl charackteristischsten Messgrößen des Fahrzeuges seine Position und Geschwindigkeit. Anhand der gegebenen Zustandsgleichungen und aus logischen Überlegungen erkennt man eine starke Abhängigkeit zu allen gesuchten Parametern. In diesem Abschnitt wird sich mit der Frage beschäftigt, wie die Messung dieser Zustände umzusetzen ist und in der nächsten Passage wird klärt, wie danach aus den gewonnen Messdaten die noch fehlenden Parametern bestimmt werden.
+\subsubsection{Geschwindigkeitsmessung}
+Die Geschwindigkeitsmessung wird hierfür intern vom Fahrzeug bereitgestellt. Sie wird dabei ähnlich wie an einem Fahrrad realisiert, indem Neodymmagnete auf alle Räder befestigt und durch Hall-Sensoren die Bewegungen der Magneten erfasst werden. Denn das Magnetfeld am Hall-Sensor ändert sich, sobald die Räder anfangen zu rotieren und die Änderung des Magnetfeldes kann schließlich direkt in eine Geschwindigkeit umgerechnet werden. Die Vorteile der Geschwindigkeitsmessung an jedem einzelnen Rad ist die höhere Auflösung, sowie eine bessere Messung der Geschwindigkeiten in Kurven. Da nämlich das Modellauto über ein Differentialgetriebe verfügt, bewegen sich die Räder in Kurvenfahrten unterschiedlich schnell, sodass die tatsächliche Geschwindigkeit des Fahrzeuges gemittelt werden muss.
+\subsubsection{Entwicklung eines Tracking-Systems zur Positionsmessung}
+Die Positionsbestimmung hingegen wird durch eine Kamera realisiert, die auf ein vorher definiertes Tesfeld ausgelegt werden muss. Die technischen Anforderungen an das Tracking sind dabei ein ausreichend großes Testfeld, sowie eine geeignete Kamera. Die Größe Parcours war jedoch durch die räumlichen Gegebenheiten stark begrenzt, sodass der Aufbau lediglich eine Fläche von 5$\times$5 Metern misst. Die Wahl der Kamera hängt dabei von verschiedenen Anforderungen ab, die vor einer Installation des Systems klar definiert werden müssen. In dem Fall eines sich schnell bewegenden Fahrzeuges ist die Bilderanzahl pro Sekunde einer Kamera sehr hoch zu gewichten, um Bewegungsunschärfe und fehlende Bewegungen zwischen zwei Bilder zu minimieren, welche die Messungen verfälschen können. Desweiteren spielt die Auflösung für Positionsgenauigkeit und die Schnittstellen der Kamera für hohe Datenraten und Netzwerkfähigkeit ein große Rolle. Nach dem Aufbau des Parcours und der Installation des Tracking-Systems, muss die Kamera kalibriert werden. Die Kalibrierung ist notwendig, um die Symmetrien die durch den "`Fischaugeneffekt"' der Linse und der perspektivischen Verzerrung entstehen wiederherzustellen. Ein gängiges Verfahren zur Beseitigung der Linsenkrümmung und der perspektivischen Verzerrung ist die Kalibrierung mittels Schachbrettmuster. Die Beseitigung des Effektes der Linsenkrümmung wird mittels einer Vorwärtstransformation der Pixel des entkrümmten Bildes in das gekrümmte realisiert \cite{Zhang}. Der Algorithmus dahinter funktioniert folgerndermaßen:\par\medskip
 \begin{enumerate}
 	\item Generierung der Kamera-Matrix K, oder auch Matrix der intrinsischen Parameter mithilfer der "`Camera Calibration Toolbox for Matlab"' \citep{Calib}. Dabei charackterisieren die Einträge $f_x$, $f_y$ die Brennweite und $c_x$, $c_y$ bilden den Mittelpunkt der Linse  auf dem Kamerabild.
 	\begin{align*}
@@ -128,33 +128,34 @@ Anschließend wird die perspektivische Ansicht in eine orthogonale Draufsicht pr
 \begin{figure}[H]
 $\begin{minipage}[b]{7cm}
 \centering
-\includegraphics[scale=0.3]{Bilder/PerspektiveCar.png} 
+\includegraphics[scale=0.26]{Bilder/PerspektiveCar.png} 
 \caption{Perspektivische Ansicht des Parcours}
 \label{fig:Pers}
 \end{minipage}
 \hfill
 \begin{minipage}[b]{7cm}
 \centering
-\includegraphics[scale=0.4]{Bilder/NonPerspektiveCar.png} 
+\includegraphics[scale=0.35]{Bilder/NonPerspektiveCar.png} 
 \caption{Top-View Projektion des Parcours}
 \label{fig:NonPers}
 \end{minipage}$
-
-(Workflow)    
-
-Nach der Kalibrierung der Kamera stellt sich die Fragestellung nach der Art der Positionserfassung. Die erste Lösung war eine Farberkennung, in der zwei Scheiben mit jeweils einer anderen Farbe auf den vorderen und hinteren Teil des Fahrzeuges befestigt wurden. Dadurch kann die Ausrichtung und der Mittelpunkt des Fahrzeuges bestimmt werden. Diese Methode war jedoch anfällig für Farbreflexionen auf der Fahrbahn, sodass die Farbwiedergabe, Belichtungszeit und Raumbeleuchtung mitunter vom Stand der Sonne abhängig war und ständig Neueinstellungen nach sich zog. Als zweite Lösung wurde im Team die Positionsbestimmung durch Infrarot-LEDs erarbeitet. Dabei wurde die Kamera um einen Filter erweitert der nur noch infrarotes Licht durchlässt. Am Fahrzeug wurden am Vorderteil zwei und hinten eine Infrarot-LED angebracht und deren Position im Bild bestimmt. Durch diese Vorgehensweise wird der Rechenaufand für die Bildverarbeitung auf ein Drittel reduziert, da keine Farbinformationen mehr gespeichert werden. Denn vorher waren die Farbinformationen in einer B$\times$H$\times$3 Matrix kodiert, welche sich durch eine Schwarz-Weiß-Kodierung auf eine B$\times$H$\times$1 Matrix reduzierte. Zudem ist dieses Verfahren weniger störanfällig, da die einzigen infraroten Lichtquellen die LEDs sind. Somit entfällt auch der Aufwand für die Neueinstellungen der Kamera. Es hat sich sogar gezeigt, dass die Kamera dadurch eine geringere Belichtungszeit benötigt um die LEDs zu erkennen, was wiederum die Anzahl der Bilder pro Sekunde erhöhte.  
 \end{figure}
+Nach der Kalibrierung der Kamera stellt sich die Fragestellung nach der Art der Positionserfassung. Die erste Lösung war eine Farberkennung, in der zwei Scheiben mit jeweils einer anderen Farbe auf den vorderen und hinteren Teil des Fahrzeuges befestigt wurden. Dadurch kann die Ausrichtung und der Mittelpunkt des Fahrzeuges bestimmt werden. Diese Methode war jedoch anfällig für Farbreflexionen auf der Fahrbahn, sodass die Farbwiedergabe, Belichtungszeit und Raumbeleuchtung mitunter vom Stand der Sonne abhängig war und ständig Neueinstellungen nach sich zog. Als zweite Lösung wurde im Team die Positionsbestimmung durch Infrarot-LEDs erarbeitet. Dabei wurde die Kamera um einen Filter erweitert der nur noch infrarotes Licht durchlässt. Am Fahrzeug wurden am Vorderteil zwei und hinten eine Infrarot-LED angebracht und deren Position im Bild bestimmt. Durch diese Vorgehensweise wird der Rechenaufand für die Bildverarbeitung auf ein Drittel reduziert, da keine Farbinformationen mehr gespeichert werden. Denn vorher waren die Farbinformationen in einer B$\times$H$\times$3 Matrix kodiert, welche sich durch eine Schwarz-Weiß-Kodierung auf eine B$\times$H$\times$1 Matrix reduzierte. Zudem ist dieses Verfahren weniger störanfällig, da die einzigen infraroten Lichtquellen die LEDs sind. Somit entfällt auch der Aufwand für die Neueinstellungen der Kamera. Es hat sich sogar gezeigt, dass die Kamera dadurch eine geringere Belichtungszeit benötigt um die LEDs zu erkennen, was wiederum die Anzahl der Bilder pro Sekunde erhöhte.   
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=0.4]{Bilder/NonPerspektiveCarLight.png} 
+%\caption{Top-View Projektion des Parcours mit Infrarot-Filter}
+%\label{fig:NonPersIR}
+%\end{figure}
+\subsubsection{Synchronisierung interner und externen Messdaten}
+Nach der Aufnahme der externen und internen Messwerte, müssen diese für die Kostenfunktion aufbereitet werden. Die Aufnahme der Messungen erfolgt dabei durch das Framework ROS (für Robot Operating System), welches alle Messungen über einen Server koordiniert und den Zeitpunkte einer jeder Messung protokolliert. Da die externen Positionsdaten der Kamera einen Takt von 50 Hz und die internen Sensoren der Geschwindigkeitsmessungen mit einem Takt von 100 Hz laufen, sind diese nicht koexistent. Um diese Daten miteinander zu synchronisieren wurde die Methode der linearen Approximation gewählt, um zu jedem Zeitpunkt Messdaten vorrätig zu haben. Dies ermöglicht einen unkomplizierten Umgang der Daten im Schätzverfahren und sorgt für eine bessere Vergleichsbasis zwischen realen und simulierten Zuständen. \\
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.4]{Bilder/NonPerspektiveCarLight.png} 
-\caption{Top-View Projektion des Parcours mit Infrarot-Filter}
-\label{fig:NonPersIR}
-\end{figure}s)  
-
-\subsubsection{Synchronisierung interner und externen Messdaten}
-Nach der Aufnahme der externen und internen Messwerte, müssen diese für die Kostenfunktion aufbereitet werden. Die Aufnahme der Messungen erfolgt dabei durch das Framework ROS (für Robot Operating System), welches alle Messungen über einen Server koordiniert und den Zeitpunkte einer jeder Messung protokolliert. Da die externen Positionsdaten der Kamera einen Takt von 50 Hz und die internen der Geschwindigkeitsmessungen einen Takt von 100 Hz haben, sind diese nicht koexistent. Um diese Daten miteinander zu synchronisieren wurde die Methode der linearen Approximation gewählt, um zu jedem Zeitpunkt Messdaten vorrätig zu haben. Dies ermöglicht einen unkomplizierten Umgang der Daten im Schätzverfahren und sorgt für eine bessere Vergleichsbasis zwischen realen und simulierten Zuständen. 
-
-\subsubsection{Schätzverfahren}
+\includegraphics[scale=0.65]{Bilder/Workflow.png} 
+\caption{Workflow des Tracking-Systems}
+\label{fig:Track}
+\end{figure}
+\subsection{Schätzverfahren}
 Unter der Verwendung der gemessenen Zustände $y_{mess} = \left \{x_1, x_2, \phi, \dot{\phi}, v  \right \}$ mit $x_1, x_2$ für die Position, $\phi, \dot{\phi}$ für die Winkelauslenkung und die Winkelgeschwindigkeit und $v$ für die Geschwindigkeit des Fahrzeuges im Weltkoordinatensystem, lassen sich durch die Wahl einer geeigneten Kostenfunktion und Optimierungsverfahrens die gesuchten Parameter identifizieren. Als Kostenfunktion wurde die Differenz aus gemessenen und simulierten Zustände mit entsprechenden Gewichtungen gewählt und diese zusätzlich quadriert, um die Kostenfunktion annähernd parabolisch darzustellen. Die simulierten Zustände werden anhand dem Modell aus \cite{VikAnd} und mit einem ODE Solver, basierend auf einem expliziten Runge-Kutta-Verfahren (\textit{ode45}) in Matlab ermittelt und in dem Vektor $y_{sim} = \left \{x_{sim|1}, x_{sim|2}, \phi_{sim}, \dot{\phi}_{sim}, v_{sim}  \right \}$ zusammengefasst. Mit den synchronisierten Daten aus den Messreihen lassen sich einzelne Zeitpunkte extrahieren und diese in der Simulation explizit angeben, sodass zu den ausgewählten Zeitpunkten in der Simulation auch reale Messwerte existieren. Die Gewichtungen $q_k$ für jeden Zustand wurden dabei so gewählt, dass die Güte eines simulierten Zustandes zu gleichen Teilen in die folgende Kostenfunktion mit einfließt:
 \begin{align*}
 J = \sum_{t=0}^{t_{end}}\sum_{k = 1}^{5} q_k\cdot  \left (y_{mess, k}\left ( t \right ) - y_{sim, k}\left ( t \right )  \right )^2
@@ -178,11 +179,9 @@ J = \sum_{t=0}^{t_{end}}\sum_{k = 1}^{5} q_k\cdot  \left (y_{mess, k}\left ( t \
 \caption{Verlauf der Kostenfunktion für alle Partikel}
 \label{pict:PSOallePart}
 \end{wrapfigure}
-Zur Optimierung wurden zwei Ansätze verfolgt um ein Optimum gewährleisten zu können. Zum einen wurde die Matlab interne Funktion \textit{fmincon} und zum anderen ein selbst entwickelter Partikel-Schwarm-Algorithmus nach \cite{PSO} verwendet. Dabei galt es den zu schätzende Parametervektor $p=\left \{ \gamma, f_R, C_{\alpha}, T_V\right \}$, bestehend aus dem Verhältnis der Kraftübertragung zwischen Vorder- und Hinterräder $\gamma$, dem Rollwiderstand $f_R$, der Schräglaufübersetzung $C_{\alpha}$ und der zeitlichen Verzögerung des Lenkeinschlages $T_V$ zu bestimmen. Um die Dimension des Vektors zu reduzieren, wurde schon in \cite{VikAnd} angedacht den Rollwiderstand allein durch eine Geradeausfahrt zu schätzen, da die anderen Parameter lediglich Einfluss auf die Zustände während Kurvenfahrten besitzen. Diese Trennung der Parameterschätzung ermöglichte es, ein optimales $f_R$ zu finden, sodass in den Kurvenfahrten alle weiteren Parameter bestimmt werden konnten und beide Optimierungsverfahren stets in das gleiche Optimum liefen. In \ref{pict:PSOallePart} wurde als Beispiel ein solcher Optimierungsaufruf durch den Partikel-Schwarm-Algorithmus dargestellt. Zu sehen der Verlauf der Kostenfunktion über jede neue Generation von Partikeln bei einer Geradeausfahrt für den Zustand $f_R$. Dabei wird sehr gut die Konvergenz vom Algorithmus ersichtlich. Die qualitativen Ergebnisse für die modellbasierte Berechnung aller Zustände befinden sich im Anhang. 
-
-\subsubsection{Ergebnisse}
-In der Anwendung der Schätzverfahren revidierten sich einige der Annahmen aus \cite{VikAnd} und es mussten teilweise neue getroffen werden, um bessere Ergebnisse zu erreichen. Zum Beispiel wurde die Annahme getroffen, dass die Schräglaufübersetzung $C_{\alpha}$ von Vorder- und Hinterräder gleich ist. Jedoch ergaben sich bei einer Trennung der Schräglaufübersetzung von Vorder- und Hinterräder eindeutig bessere Ergebnisse. Zudem musste ein weiterer Parameter $\eta_M$ eingeführt werden, um den Wirkungsgrad des Drehmomentes zu beschreiben, welches vom Motor erzeugt auf die Räder geleitet wird. Somit ergaben sich folgende Parameter, die das Modell mit einer ausreichenden Genauigkeit beschreiben: 
-
+Zur Optimierung wurden zwei Ansätze verfolgt um ein Optimum gewährleisten zu können. Zum einen wurde die Matlab interne Funktion \textit{fmincon} und zum anderen ein selbst entwickelter Partikel-Schwarm-Algorithmus nach \cite{PSO} verwendet. Dabei galt es den zu schätzende Parametervektor $p=\left \{ \gamma, f_R, C_{\alpha}, T_V\right \}$, bestehend aus dem Verhältnis der Kraftübertragung zwischen Vorder- und Hinterräder $\gamma$, dem Rollwiderstand $f_R$, der Schräglaufübersetzung $C_{\alpha}$ und der zeitlichen Verzögerung des Lenkeinschlages $T_V$ zu bestimmen. Um die Dimension des Vektors zu reduzieren, wurde schon in \cite{VikAnd} angedacht den Rollwiderstand allein durch eine Geradeausfahrt zu schätzen, da die anderen Parameter lediglich Einfluss auf die Zustände während Kurvenfahrten besitzen. Diese Trennung der Parameterschätzung ermöglichte es, ein optimales $f_R$ zu finden, sodass in den Kurvenfahrten alle weiteren Parameter bestimmt werden konnten und beide Optimierungsverfahren stets in das gleiche Optimum liefen. In \ref{pict:PSOallePart} wurde als Beispiel ein solcher Optimierungsaufruf durch den Partikel-Schwarm-Algorithmus dargestellt. Zu sehen der Verlauf der Kostenfunktion über jede neue Generation von Partikeln bei einer Geradeausfahrt für den Zustand $f_R$. Dabei wird sehr gut die Konvergenz vom Algorithmus ersichtlich.
+\subsection{Ergebnisse}
+In der Anwendung der Schätzverfahren revidierten sich einige der Annahmen aus \cite{VikAnd} und es mussten teilweise neue getroffen werden, um bessere Ergebnisse zu erreichen. Zum Beispiel wurde die Annahme getroffen, dass die Schräglaufübersetzung $C_{\alpha}$ von Vorder- und Hinterräder gleich ist. Jedoch ergaben sich bei einer Trennung der Schräglaufübersetzung von Vorder- und Hinterräder eindeutig bessere Ergebnisse. Zudem musste der Eingang des Motordrehmomentes um ein weiterer Parameter $\eta_M$ erweitert werden, um den Wirkungsgrad des Drehmomentes zu beschreiben, welches vom Motor erzeugt auf die Räder geleitet wird. Somit ergaben sich folgende Parameter, die das Modell mit einer ausreichenden Genauigkeit beschreiben: 
 \begin{table}[H]
 \centering
 \begin{tabularx}{\columnwidth}{m{7cm}|m{4cm}|X}
@@ -198,4 +197,24 @@ In der Anwendung der Schätzverfahren revidierten sich einige der Annahmen aus \
 \caption{Ergebnisse der geschätzten Parameter. \label{tab:ParSch}}
 \end{table} 
 
-(Bild Ergbnis Realität zu Simulation mit geschätzten Parametern, Aussage "`ausreichend"' definieren - sprich das Modell kann dem realen System für 2 Meter exakt auf ... Metern folgen, dass reicht aus um die MPC für einen Zeithorizont von ... Sekunden bei der Geschwindigkeit von ... M/s zu auszulegen. Da wir auch nicht mehr von der Wahrnehmung erhalten, ergibt sich eine korrekte Vorhersage)
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\node [anchor=south west,inner sep=0] at (0,0) {\includegraphics[scale=0.5]{Bilder/Schaetzung.png} };
+\node[draw] at (11,8) 
+{
+\setlength{\extrarowheight}{3pt}
+\begin{tabular}{b{1cm}m{4.5cm}}
+%\multicolumn{2}{c}{\tikz\draw [bblue,-,line width=0.3mm] (0,0) -- (1,0);} & Gemessene Positionsdaten \\
+%\multicolumn{2}{c}{\tikz\draw [yyelow,dashed,line width=0.3mm] (0,0) -- (1,0);} & Simulierte Positionsdaten \\
+\tikz\draw [bblue,-,line width=0.3mm] (0,0) -- (1,0); & Positionen des Fahrzeuges \\
+\tikz\draw [yyelow,dashed,line width=0.3mm] (0,0) -- (1,0); & Simulierte Fahrt \\
+\end{tabular}
+};
+\end{tikzpicture}
+\caption{Reale Messwerte und simulierte Zustände im direkten Vergleich}
+\label{fig:RealSim}
+\end{figure} 
+
+In Abbildung \ref{fig:RealSim} wurden die Simulationsdaten mit den real gemessen Positionsdaten direkt gegenübergestellt. Die Fahrt einer Linkskurve wurde dabei mit einer Endgeschwindigkeit von $2\frac{\text{m}}{\text{s}}$ und einem konstanten Lenkeinschlag von ungefähr $15^\circ$ durchgeführt. Die Ergebnisse scheinen auf den ersten Blick nicht zufriedenstellend zu sein, da nach ungefähr drei Metern die Abweichung beider Kurven größer als die Fahrspurbreite wird. Die Gründe sind zum einen, dass das Modell die Realität nur unzureichend beschreibt und zum anderen das bei einer numerischen Berechnung eines nichtlinearen Differentialgleichungssystem stets Berechnungsfehler gemacht werden. Jedoch unter Berücksichtigung der Tatsache, dass im autonomen Fahrmodus die Kamera maximal zwei Meter voraus blicken kann, relativiert sich die Güte des Modells zu einer sehr guten Vorhersage für einen begrenzten Horizont. Da in jedem Schritt das Fahrzeug wieder auf die Trajektorie plaziert wird, summiert sich somit der gemachte Fehler nur bis zum nächsten Messzeitpunkt und wird danach wieder auf Null zurückgesetzt. \\
+In einer zukünftigen Version vom "`oTToCar"' ist die Spurerkennung nicht mehr allein durch die Kamera-Wahrnehmung gegeben. Zusätzlich soll sich das Auto in einer Weltkarte zurechtfinden und die Pfade entlang der Fahrbahn weit im Voraus berechnet werden. Für diese Zukunft reicht das Modell und die Parameter jedoch nicht mehr aus und muss weiter verbessert werden.

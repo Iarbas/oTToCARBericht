@@ -20,8 +20,8 @@ Warning--entry type for "Wim" isn't style-file defined
 --line 124 of file Quellen.bib
 Warning--entry type for "TT01" isn't style-file defined
 --line 142 of file Quellen.bib
-Warning--I didn't find a database entry for "Dobr"
 Warning--there's no year in PSO
+Warning--there's no year in Dobri
 Warning--there's no year in Prom
 Warning--there's no year in Neva
 Warning--there's no year in Peter
@@ -32,45 +32,45 @@ Warning--there's no year in TimMar
 Warning--there's no year in VikAnd
 Warning--empty number in Zhang
 Warning--empty note in Zhang
-You've used 16 entries,
+You've used 17 entries,
             4335 wiz_defined-function locations,
-            920 strings with 8124 characters,
-and the built_in function-call counts, 5374 in all, are:
-= -- 456
-> -- 151
-< -- 23
-+ -- 64
-- -- 46
-* -- 307
-:= -- 990
-add.period$ -- 19
-call.type$ -- 16
-change.case$ -- 55
+            923 strings with 8273 characters,
+and the built_in function-call counts, 5683 in all, are:
+= -- 485
+> -- 158
+< -- 24
++ -- 67
+- -- 48
+* -- 321
+:= -- 1046
+add.period$ -- 20
+call.type$ -- 17
+change.case$ -- 58
 chr.to.int$ -- 0
-cite$ -- 27
-duplicate$ -- 198
-empty$ -- 555
-format.name$ -- 92
-if$ -- 1178
+cite$ -- 29
+duplicate$ -- 211
+empty$ -- 589
+format.name$ -- 96
+if$ -- 1248
 int.to.chr$ -- 0
-int.to.str$ -- 16
-missing$ -- 74
-newline$ -- 96
-num.names$ -- 32
-pop$ -- 133
+int.to.str$ -- 17
+missing$ -- 77
+newline$ -- 101
+num.names$ -- 34
+pop$ -- 142
 preamble$ -- 1
-purify$ -- 55
+purify$ -- 58
 quote$ -- 0
-skip$ -- 217
+skip$ -- 230
 stack$ -- 0
-substring$ -- 162
-swap$ -- 38
-text.length$ -- 23
+substring$ -- 172
+swap$ -- 39
+text.length$ -- 24
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 64
-warning$ -- 11
-while$ -- 55
-width$ -- 18
-write$ -- 202
+type$ -- 68
+warning$ -- 12
+while$ -- 58
+width$ -- 19
+write$ -- 214
 (There were 18 warnings)
