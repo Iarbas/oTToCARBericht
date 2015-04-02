@@ -56,9 +56,10 @@ Kostenfunktion angepasst $x_p(i)-x_r((i-k)\Delta t)$\\
 Das Modell liefert als $x_1$ und $x_2$ die Position des Autos auf einer globalen Karte und den Gierwinkel dazu. Da bisher noch keine globale Karte implementiert ist, wird jedes Mal, wenn eine neue Polylinie vorhanden ist die Pseudo-Weltkarte auf das Vehicle Reference Frame zurück gesetzt (Fahrzeugposition und Gierwinkel auf 0 setzen.) Es ist dann kurzeitig möglich, wenn keine neue Polylinie vorhanden ist, weiter an der letzten Referenztrajektorie weiter zu fahren, in dem man x(k) mit Hife des Modells schätzt.\\ \\
 Referenz visualisieren: Plot der Punkte der Polylinie mit eingetragener Prädiktion des optimalen Lenkeinschlags
 \subsubsection{Vereinfachungen}
-Aktuell wird die Motorsteuergröße nicht mitoptimiert und der Prädiktionshorizont beträgt 1. In dieser Konfiguration gibt es sicher Algorithmen wie LQR die Äquivalente Lösungen liefern und dabei besser nachweisbare Stabilität aufweisen. Es wurde sich trotzdem für die vereinfachte Variante entschieden, um diese in Zukunft so wie geplant zu erweitern.\\ \\
-Es genügt den Scheitelpunkt der approximierten Variablen zu berechnen. genau genug.\\
-Kostenfunktion wie Parabel im Bereich unseres Interesses, an kann mit 3 Funktionsaufrufen den Schritt bestimmen, der zum Approximierten Optimum führt. Durch genügend hohe Wiederholrate ist das Ergebnis genau genug.
+Aufgrund zwischenzeitlich erschöpften Rechenkapazitäten auf dem Fahrzeug während der Entwicklungsphase wurde der modellprädiktive Ansatz zunächst auf die einfachste denkbare Implementierung [[[zusammengestrichen]]]. Dabei wurde darauf verzichtet die Motorsteuergröße mit zu optimieren und der Stellhorizont für den Lankeinschlag ist auf $n_c=1$ begrenzt. Aufgrund trotzdem zufriedenstellender Ergebnisse wurde an dieser Vereinfachung auch im Carolocup festgehalten.\\ \\
+Die Scheitelpunkt der approximierten Variablen zu berechnen. genau genug.\\
+Kostenfunktion wie Parabel im Bereich unseres Interesses, an kann mit 3 Funktionsaufrufen den Schritt bestimmen, der zum Approximierten Optimum führt. Durch genügend hohe Wiederholrate ist das Ergebnis genau genug.\\ \\
+Die Vorgabe der Geschwindigkeit erfolgt dabei aus einer einfachen Abhängigkeit von der mittleren prädizierten Gierrate. 
 Skalierbarkeit\\
 Scheitelpunkt -> Newtonschritt der quadratischen Kostenfunktion\\
 
@@ -88,4 +89,4 @@ Polylinie um Fahrspurbreite verschieben, wenn Hindernis erkannt, wie in Abb. \re
 \subsection{Dynamic Reconfigure}
 In der Vorbereitung auf den Wettkampf hat sich herausgestellt, dass die kurzen Testzeiten auf der Originalstrecke gut ausgenutzt werden muss. Dazu musste vorher extrahiert werden, welche Parameter entscheidenen Einfluss auf die Güte haben. Diese konnten dann online während der Fahrt mit dem dynamic reconfigure Paket getuned werden. (Übersicht Parameter)\\
 \subsection{Zukünftige Schritte}
-Geschwindigkeit, mehrere Schritte in die Zukunft, Erstellung einer Karte mit Gewichtung der Confidence der Polylinien
+Geschwindigkeit, Zusätzlich soll in der weiteren Entwicklung der Stellhorizont $n_c$ Erhöht werden um von der Prädiktion genauerer Information über die zukünftige Bewegung des Fahrzeuges zu bekommen. So wird erwaret dadurch schon eher vor Kurven bremsen und ebenfalls frühzeitiger aus Kurven heraus beschleunigen zu können, um eine Im Mittel höhere Geschwindikeit zu erreichen.\\ \\ Die Erstellung einer globalen Karte soll das Fahrverhalten außerdem robuster gegenüber Fehlwahrnehmungen der Fahrbahn machen und eine genauere Schätzung des aktuellen Zustands ermöglichen.
