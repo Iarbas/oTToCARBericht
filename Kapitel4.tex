@@ -45,15 +45,16 @@ Als Systemeingänge für das Fahrzeugmodell sind eine abstrakte Entsprechung des
 Je größer man $n_c$ wählt, desto besser lässt sich z.B. die Geschwindigkeit in Abhängigkeit zur Entfernung und Krümmung einer bevorstehenden Kurve begrenzen oder Schwierigkeiten beim Durchfahren von S-Kurven bewältigen. Allerdings nimmt dadurch auch die Dimension der Optimierungsvariable zu, was dazu führt, dass die Grenzen der verfügbaren Rechenzeit zum Lösen des Optimierungsproblems während der Laufzeit schnell erreicht werden.
 \subsubsection{Referenztrajektorie}
 Mit einer auf dem Fahrzeug befestigten Kamera lässt sich die zu verfolgende Fahrbahn wahrnehmen. Diese Wahrnehmung liefert mit einer Rate von bis zu 50Hz eine Polylinie der erkannten Fahrbahnmarkierung projeziert auf die rechte Fahrspur. Diese Polyline kann je nach erkannter Fahrbahn aus einer unterschiedlich Anzahl von Punkten mit variablem Abstand zu einander bestehen.\\ \\
-Um diese Polylinien als Referenztrajektorie für die MPC nutzen zu können, werden zu kurze Polylinien zunächst soweit extrapoliert, dass ein Vergleich zwischen Prädiktion zum Zeitschritt $k+np$ und Referenz in jedem Fall möglich ist. Anschließend werden die Koordinaten der Punkte auf der Polylinie als Funkion in Abhängigkeit der summierten Wegstrecke zwischen den Punkten vom Auto ausgehend hinterlegt, um diese dann als Referenztrajektorie zu jeder beliebigen Wegstrecke s = v*t*i interpolieren zu können.\\ \\
-Kostenfunktion angepasst $x_p(i)-x_r((i-k)\Delta t)$
-Das Modell liefert als $x_1$ und $x_2$ die Position des Autos auf einer globalen Karte und den Gierwinkel dazu. Da bisher noch keine globale Karte implementiert ist, wird jedes Mal, wenn eine neue Polylinie vorhanden ist die Pseudo-Weltkarte auf das Vehicle Reference Frame zurück gesetzt (Fahrzeugposition und Gierwinkel auf 0 setzen.) Es ist dann kurzeitig möglich, wenn keine neue Polylinie vorhanden ist, weiter an der letzten Referenztrajektorie weiter zu fahren, in dem man x(k) mit Hife des Modells schätzt.\\ \\
-Referenz visualisieren: Plot der Punkte der Polylinie mit eingetragener Prädiktion des optimalen Lenkeinschlags\\
+Um diese Polylinien als Referenztrajektorie für die MPC nutzen zu können, werden zu kurze Polylinien zunächst soweit extrapoliert, dass ein Vergleich zwischen Prädiktion zum Zeitschritt $k+np$ und Referenz in jedem Fall möglich ist. Anschließend werden die Koordinaten der Punkte auf der Polylinie als Funkion in Abhängigkeit der summierten Wegstrecke zwischen den Punkten vom Auto ausgehend hinterlegt, um diese dann als Referenztrajektorie zu jeder beliebigen Wegstrecke s = v*t*i interpolieren zu können. In Abb. \ref{fig:referenz} ist ein Beispiel einer Referenztrajektorie dargestellt.
 \begin{figure}[t]
 \centering
 \includegraphics[scale=0.53]{Bilder/Reference.png}
-\caption{Veranschaulichung der Referenztrajektorie und des prädizierten Verhaltens}
-\end{figure}
+\caption{Veranschaulichung der Referenztrajektorie und des prädizierten Verhaltens aufgetragen im Weltkoordinatensystem $x_1$ über $x_2$ in Meter}
+\label{fig:referenz}
+\end{figure}\\ \\
+Kostenfunktion angepasst $x_p(i)-x_r((i-k)\Delta t)$\\
+Das Modell liefert als $x_1$ und $x_2$ die Position des Autos auf einer globalen Karte und den Gierwinkel dazu. Da bisher noch keine globale Karte implementiert ist, wird jedes Mal, wenn eine neue Polylinie vorhanden ist die Pseudo-Weltkarte auf das Vehicle Reference Frame zurück gesetzt (Fahrzeugposition und Gierwinkel auf 0 setzen.) Es ist dann kurzeitig möglich, wenn keine neue Polylinie vorhanden ist, weiter an der letzten Referenztrajektorie weiter zu fahren, in dem man x(k) mit Hife des Modells schätzt.\\ \\
+Referenz visualisieren: Plot der Punkte der Polylinie mit eingetragener Prädiktion des optimalen Lenkeinschlags
 \subsubsection{Vereinfachungen}
 Aktuell wird die Motorsteuergröße nicht mitoptimiert und der Prädiktionshorizont beträgt 1. In dieser Konfiguration gibt es sicher Algorithmen wie LQR die Äquivalente Lösungen liefern und dabei besser nachweisbare Stabilität aufweisen. Es wurde sich trotzdem für die vereinfachte Variante entschieden, um diese in Zukunft so wie geplant zu erweitern.\\ \\
 Es genügt den Scheitelpunkt der approximierten Variablen zu berechnen. genau genug.\\
@@ -63,24 +64,28 @@ Scheitelpunkt -> Newtonschritt der quadratischen Kostenfunktion\\
 
 Lösen der Modellgleichungen mit konster geringer Geschwindigkeit, da für hohe Geschwindigkeiten noch keine passenden Modellparameter bestimmt werden konnten.
 \subsubsection{Stabilität}
-Um Sicher zu gehen, dass der Algorithmus immer gegen ein Optimum konvergiert wurde die in implementierten Fall skalare Kostenfunktionen in der Parcour fahrt in möglichst vielen denkbaren Positionen aufgenommen und überprüft, dass sich kein Fall ergibt, in dem das Optimierungsproblem in relevanten Bereich nicht convex ist.
-\\
-\\
+Um Sicher zu gehen, dass der Algorithmus immer gegen ein Optimum konvergiert wurde die in implementierten Fall skalare Kostenfunktionen in der Parcour fahrt in möglichst vielen denkbaren Positionen aufgenommen und überprüft, dass sich kein Fall ergibt, in dem das Optimierungsproblem in relevanten Bereich nicht convex ist. ob sich Fälle ergeben in denen die Kostenfunktion im relevanten Bereich der möglichen Lenkeinschläge nicht convex ist. Abb. \ref{fig:parabel} zeigt das Ergebnis dieser Untersuchung. Es ist zu erkennen, dass die Kostenfunktion nur in wenigen Ausnahmefällen einer nach unten geöffneten Parabel ähnelt. Der hierbei berechnete Lenkeinschlag wird nicht auf das System gegeben, stattdessen wird mit dem vorherig berechneten Lenkeinschlag weiter gefahren und auf die nächste Polylinie von der Wahrnehmung gewartet. [[[[Bzw. an der alten Polylinie weiter gefahren]]]] Dank der relativ hohen Wiederholrate des Reglers stellen diese vereinzelten Ausfälle kein Problem dar.
 \begin{figure}[t]
 \centering
 \includegraphics[scale=0.75]{Bilder/Parabeln.png}
 \caption{Kostenfunktion in Abhängigkeit vom Radeinschlag in verschiedenen Fahrzeugpositionen}
+\label{fig:parabel}
 \end{figure}
-
-Aufwand\\
-Nochmal überlegen\\
 
 \subsubsection{Beschränkungen}
 Hinzufügen von ~
 \subsection{Spurwechsel}
-Polylinie um Fahrspurbreite verschieben, wenn Hindernis erkannt. MPC findet optimale Trajektorie zu den verschobenen Punkten. Problem: Fahrspur verschwindet aus Sichtfeld. Langsameres Dosierteres Spurwechseln ist keine Lösung, da Hindernisse nach einer Kurve oft erst spät erkannt werden und deshalb Spurwechsel auf kurzer Distanz nötig sind. Lösung: Orientierung auf Karte
+\begin{wrapfigure}{r}{8cm} 
+%\begin{figure}[t]
+\centering
+\includegraphics[scale=0.55]{Bilder/Spurwechsel.png}
+\caption{Verschieben der Referenztrajektorie auf die linke Fahrspur bei erkanntem Hindernis}
+\label{fig:spurwechsel}
+%\end{figure}
+\end{wrapfigure}
+Polylinie um Fahrspurbreite verschieben, wenn Hindernis erkannt, wie in Abb. \ref{fig:spurwechsel} dargestellt. MPC findet optimale Trajektorie zu den verschobenen Punkten. Ein Problem stellt dabei allerdings die Wahrnehmung dar, weil bei starken Einlenken die Fahrbahn aus dem Sichtfeld der Kamera verschwindet. Alternativ eine Trajektorie vorzugeben bei der die Fahrbahn weiterhin wahrgenommen wird, ist nicht denkbar, da Hindernisse nach einer Kurve oft erst spät erkannt werden und deshalb Spurwechsel auf möglichst kürzester Distanz nötig sind. Da das Verfolgen der zuletzt gesehenen Polylinie wegen Modellungenauigkeiten und begrenzter Länge der Polylinie nur kurzzeitig ausreichend gut funktioniert, schlägt diese Strategie immernoch häufig fehl. Dazu wird allerdings eine wirkliche globale Karte implementiert in der die komplette Referenztrajektorie eingetragen ist und die tatsächliche Position des Fahrzeugs im Weltkoordinatensystem anhand der erkannten Strecke besser geschätzt werden kann.
 
 \subsection{Dynamic Reconfigure}
-In der Vorbereitung auf den Wettkampf hat sich herausgestellt, dass die kurzen Testzeiten auf der Originalstrecke gut ausgenutzt werden muss. Dazu musste vorher extrahiert werden, welche Parameter entscheidenen Einfluss auf die Güte haben. Diese konnten dann online während der Fahrt mit dem dynamic reconfigure Paket getuned werden. (welche Parameter)\\
+In der Vorbereitung auf den Wettkampf hat sich herausgestellt, dass die kurzen Testzeiten auf der Originalstrecke gut ausgenutzt werden muss. Dazu musste vorher extrahiert werden, welche Parameter entscheidenen Einfluss auf die Güte haben. Diese konnten dann online während der Fahrt mit dem dynamic reconfigure Paket getuned werden. (Übersicht Parameter)\\
 \subsection{Zukünftige Schritte}
 Geschwindigkeit, mehrere Schritte in die Zukunft, Erstellung einer Karte mit Gewichtung der Confidence der Polylinien
