@@ -121,6 +121,16 @@
   Url                      = {http://www.shanetuohy.com/fyp/Images/issc.pdf}
 }
 
+@Electronic{Wim,
+  Title                    = {Winkelmesser},
+  Author                   = {{Scientif38}},
+  Organization             = {Wikipedia Foundation},
+  Url                      = {http://commons.wikimedia.org/wiki/File:Protractor_Rapporteur_Degree_V1.jpg},
+
+  Owner                    = {andre},
+  Timestamp                = {2015.02.25}
+}
+
 @Article{TimMar,
   Title                    = {Entwicklung einer Karosserie für das oTToCar},
   Author                   = {{T. Rose} and {M. Treseler}},
@@ -156,11 +166,11 @@
   Url                      = {http://research.microsoft.com/en-us/um/people/zhang/Papers/TR98-71.pdf}
 }
 
-@Electronic{Wim,
-  Title                    = {Winkelmesser},
-  Url                      = {http://commons.wikimedia.org/wiki/File:Protractor_Rapporteur_Degree_V1.jpg},
-
-  Owner                    = {andre},
-  Timestamp                = {2015.02.25}
+@BOOK{ADA09,
+	title = {Nichtlineare Regelungen},
+	publisher = {Springer-Verlag},
+	year = {2009},
+	editor = {},
+	author = {{J. Adamy}},
+	timestamp = {2015.04.02}
 }
-

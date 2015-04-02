@@ -46,29 +46,34 @@
 \newblock {In: }\emph{Die Zeit}
   \url{http://www.zeit.de/1992/35/das-intelligent-gefuehrte-auto}
 
-\bibitem[7]{Neva}
+\bibitem[7]{ADA09}
+\textsc{{J. Adamy}}:
+\newblock \emph{Nichtlineare Regelungen}.
+\newblock Springer-Verlag, 2009
+
+\bibitem[8]{Neva}
 \textsc{{J. Muller}}:
 \newblock With Driverless Cars, Once Again It Is California Leading The Way.
 \newblock {In: }\emph{Forbes Magazin}
   \url{http://www.forbes.com/sites/joannmuller/2012/09/26/with-driverless-cars-once-again-it-is-california-leading-the-way/}
 
-\bibitem[8]{Calib}
+\bibitem[9]{Calib}
 \textsc{{J.-Y. Bouguet}}:
 \newblock \emph{Camera Calibration Toolbox for Matlab}.
 \newblock \url{http://www.vision.caltech.edu/bouguetj/calib_doc/index.html}
 
-\bibitem[9]{DemMan}
+\bibitem[10]{DemMan}
 \textsc{{M. Brambilla (Regie)}}:
 \newblock \emph{Demolition Man}.
 \newblock Film (1993).
 \newblock \url{http://www.imdb.com/title/tt0106697/}
 
-\bibitem[10]{Peter}
+\bibitem[11]{Peter}
 \textsc{{P. Kovesi}}:
 \newblock MATLAB and Octave Functions for Computer Vision and Image Processing.
 \newblock  \url{http://www.csse.uwa.edu.au/~pk/research/matlabfns/}
 
-\bibitem[11]{Steve}
+\bibitem[12]{Steve}
 \textsc{{S. Eddins}}:
 \newblock Spatial transformations: Defining and applying custom transforms /
   MathWorks.
@@ -77,35 +82,35 @@
   --
 \newblock Forschungsbericht
 
-\bibitem[12]{Galway}
+\bibitem[13]{Galway}
 \textsc{{S. Tuohy}} ; \textsc{{D.O’Cualain}} ; \textsc{{E. Jones}}  ;
   \textsc{{M.Glavin}}:
 \newblock Distance Determination for an Automobile Environment using Inverse
   Perspective Mapping in OpenCV.
 \newblock {In: }\emph{ISSC} \url{http://www.shanetuohy.com/fyp/Images/issc.pdf}
 
-\bibitem[13]{Wim}
+\bibitem[14]{Wim}
 \textsc{{Scientif38}}:
 \newblock \emph{Winkelmesser}.
 \newblock
   \url{http://commons.wikimedia.org/wiki/File:Protractor_Rapporteur_Degree_V1.jpg}
 
-\bibitem[14]{TimMar}
+\bibitem[15]{TimMar}
 \textsc{{T. Rose}} ; \textsc{{M. Treseler}}:
 \newblock Entwicklung einer Karosserie für das oTToCar.
 \newblock
 
-\bibitem[15]{TT01}
+\bibitem[16]{TT01}
 \textsc{{Tamiya Inc.}}:
 \newblock \emph{Tamiya TT-01 Type-E (TT-01E) Chassis}.
 \newblock \url{http://www.rcscrapyard.net/de/tamiya-tt-01-type-e.htm}
 
-\bibitem[16]{VikAnd}
+\bibitem[17]{VikAnd}
 \textsc{{V. Wiedmeier}} ; \textsc{{A. Himmel}}:
 \newblock oTToCAR, Interdisziplinäres Teamprojekt.
 \newblock
 
-\bibitem[17]{Zhang}
+\bibitem[18]{Zhang}
 \textsc{{Z. Zhang}}:
 \newblock A Flexible New Technique for Camera Calibration / Microsoft Research,
   Microsoft Corporation.

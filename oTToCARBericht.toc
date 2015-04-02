@@ -10,12 +10,11 @@
 \contentsline {section}{\numberline {3}Fahrspurregelung mittels modellpr\IeC {\"a}diktiver Regelung}{11}{section.3}
 \contentsline {subsection}{\numberline {3.1}Problemformulierung f\IeC {\"u}r die modellpr\IeC {\"a}diktive Regelung}{11}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Implementierung der Fahrspurregelung f\IeC {\"u}r das oTToCAR}{12}{subsection.3.2}
-\contentsline {subsubsection}{\numberline {3.2.1}Dimension der Optimierungsvariable}{12}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.1}Dimension der Optimierungsvariablen}{12}{subsubsection.3.2.1}
 \contentsline {subsubsection}{\numberline {3.2.2}Referenztrajektorie}{12}{subsubsection.3.2.2}
-\contentsline {subsubsection}{\numberline {3.2.3}Vereinfachungen}{13}{subsubsection.3.2.3}
+\contentsline {subsubsection}{\numberline {3.2.3}Reduzierung der Komplexit\IeC {\"a}t des Optimierungsproblems}{13}{subsubsection.3.2.3}
 \contentsline {subsubsection}{\numberline {3.2.4}Stabilit\IeC {\"a}t}{14}{subsubsection.3.2.4}
-\contentsline {subsubsection}{\numberline {3.2.5}Beschr\IeC {\"a}nkungen}{14}{subsubsection.3.2.5}
 \contentsline {subsection}{\numberline {3.3}Spurwechsel}{14}{subsection.3.3}
 \contentsline {subsection}{\numberline {3.4}Dynamic Reconfigure}{15}{subsection.3.4}
-\contentsline {subsection}{\numberline {3.5}Zuk\IeC {\"u}nftige Schritte}{15}{subsection.3.5}
-\contentsline {section}{Literaturverzeichnis}{15}{subsection.3.5}
+\contentsline {subsection}{\numberline {3.5}Zuk\IeC {\"u}nftig geplante Verbesserungen des Algorithmus}{15}{subsection.3.5}
+\contentsline {section}{Literaturverzeichnis}{16}{subsection.3.5}
