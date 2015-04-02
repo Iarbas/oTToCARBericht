@@ -42,18 +42,18 @@ Weiterhin lässt sich das Optimierungsproblem um einfache Beschränkungen der Ei
 \end{align*}
 und Zustandsbeschränkungen der Form
 \begin{align*}
-  \boldsymbol{A}\boldsymbol{x}_p(i) \leq \boldsymbol{b}\quad i=k,...,k+n_p-1
+  \boldsymbol{A}\boldsymbol{x}_p(i) \leq \boldsymbol{b}\quad i=k+1,...,k+n_p
 \end{align*}
 erweitern.
 
 \subsection{Konkrete Implementierung der Fahrspurregelung für das oTToCAR}
 Die konkrete Implementierung der Fahrspurregelung auf der Recheneinheit des oTToCARs macht weitere Vorarbeit, wie das erstellen der Referenztrajektorie und Anpassungen des allgemeinen Ansatzes für die MPC wie gewisse Vereinfachungen, um die Regelung mit einer Rate von 50Hz betreiben zu können, nötig.
 \subsubsection{Dimension der Optimierungsvariable}
-Als Systemeingänge für das Fahrzeugmodell sind eine abstrakte Entsprechung des Motordrehmoments $u_1=...$ und der Lenkeinschlag der Räder $u_2=...$ vorhanden, demnach ergibt sich der Stellgrößenvektor zum Zeitpunkt $k$ zu $\boldsymbol{u}(k)=[u_1(k), u_2(k)]^T$. Da sich die prädizierten Zustände $\boldsymbol{x}_p$ aus den Gleichungsnebenbedingungen berechnen lassen, ergibt sich die Dimension der Optimierungsvariable also zu $2\cdot n_c$.
+Als Systemeingänge für das Fahrzeugmodell sind der Lenkeinschlag der Räder $u_1=\delta$ und das Motordrehmoment $u_2=M_A$ vorhanden, demnach ergibt sich der Stellgrößenvektor zum Zeitpunkt $k$ zu $\boldsymbol{u}(k)=[u_1(k), u_2(k)]^T$. Da sich die prädizierten Zustände $\boldsymbol{x}_p$ aus den Gleichungsnebenbedingungen berechnen lassen, ergibt sich die Dimension der Optimierungsvariable also zu $2\cdot n_c$.
 Je größer man $n_c$ wählt, desto besser lässt sich z.B. die Geschwindigkeit in Abhängigkeit zur Entfernung und Krümmung einer bevorstehenden Kurve begrenzen oder Schwierigkeiten beim Durchfahren von S-Kurven bewältigen. Allerdings nimmt dadurch auch die Dimension der Optimierungsvariable zu, was dazu führt, dass die Grenzen der verfügbaren Rechenzeit zum Lösen des Optimierungsproblems während der Laufzeit schnell erreicht werden.
 \subsubsection{Referenztrajektorie}
 Mit einer auf dem Fahrzeug befestigten Kamera lässt sich die zu verfolgende Fahrbahn wahrnehmen. Diese Wahrnehmung liefert mit einer Rate von bis zu 50Hz eine Polylinie der erkannten Fahrbahnmarkierung projiziert auf die rechte Fahrspur. Diese Polyline kann je nach erkannter Fahrbahn aus einer unterschiedlich Anzahl von Punkten mit variablem Abstand zu einander bestehen.\\ \\
-Um diese Polylinien als Referenztrajektorie für die MPC nutzen zu können, werden zu kurze Polylinien zunächst soweit extrapoliert, dass ein Vergleich zwischen Prädiktion zum Zeitschritt $k+np$ und Referenz in jedem Fall möglich ist. Anschließend werden die Koordinaten der Punkte auf der Polylinie als Funkion in Abhängigkeit der summierten Wegstrecke zwischen den Punkten vom Auto ausgehend hinterlegt, um diese dann als Referenztrajektorie zu jeder beliebigen Wegstrecke s = v*t*i interpolieren zu können. In Abb. \ref{fig:referenz} ist ein Beispiel einer Referenztrajektorie dargestellt.
+Um diese Polylinien als Referenztrajektorie für die MPC nutzen zu können, werden zu kurze Polylinien zunächst soweit extrapoliert, dass ein Vergleich zwischen Prädiktion zum Zeitschritt $k+np$ und Referenz in jedem Fall möglich ist. Anschließend werden die Koordinaten der Punkte auf der Polylinie als Funkion in Abhängigkeit der summierten Wegstrecke zwischen den Punkten (vom Auto ausgehend) hinterlegt, um diese als Referenztrajektorie zu den dazugehörigen Werten aus der Prädiktion mit der zurückgelegten Wegstrecke $s = v*\Delta t*i$ interpolieren zu können. In Abb. \ref{fig:referenz} ist ein Beispiel einer Referenztrajektorie dargestellt.
 \begin{figure}[t]
 \centering
 \includegraphics[scale=0.53]{Bilder/Reference.png}
