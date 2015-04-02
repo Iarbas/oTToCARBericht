@@ -9,7 +9,7 @@
 \contentsline {subsection}{\numberline {2.4}Ergebnisse}{9}{subsection.2.4}
 \contentsline {section}{\numberline {3}Fahrspurregelung mittels modellpr\IeC {\"a}diktiver Regelung}{11}{section.3}
 \contentsline {subsection}{\numberline {3.1}Problemformulierung f\IeC {\"u}r die modellpr\IeC {\"a}diktive Regelung}{11}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Konkrete Implementierung der Fahrspurregelung f\IeC {\"u}r das oTToCAR}{12}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.2}Implementierung der Fahrspurregelung f\IeC {\"u}r das oTToCAR}{12}{subsection.3.2}
 \contentsline {subsubsection}{\numberline {3.2.1}Dimension der Optimierungsvariable}{12}{subsubsection.3.2.1}
 \contentsline {subsubsection}{\numberline {3.2.2}Referenztrajektorie}{12}{subsubsection.3.2.2}
 \contentsline {subsubsection}{\numberline {3.2.3}Vereinfachungen}{13}{subsubsection.3.2.3}
